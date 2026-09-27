@@ -79,6 +79,8 @@
   .hero .meta-line{margin-top:56px;font-size:14.5px;font-weight:400;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
   .hero .meta-line .mono{font-family:var(--mono);letter-spacing:.16em;color:var(--ink);}
   .hero .meta-line .sep{color:var(--hai);}
+  .hero .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:44px;}
+  .hero .hero-cta .btn{margin-top:0;}
   .btn{display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:500;font-size:13.5px;
     padding:15px 46px;border:1px solid var(--ink);cursor:pointer;transition:opacity .15s,background .15s,color .15s;letter-spacing:.14em;margin-top:44px;}
   .btn:hover{opacity:.82;}
@@ -241,8 +243,9 @@
       </div>
 
       <div class="label" style="margin-top:56px;">周辺地図</div>
+      <!-- 地名検索(q=名称)は表示のたびに再ジオコーディングされ結果が揺れるため、座標＋ラベルでピンを固定している -->
       <iframe class="map" style="height:380px;" title="立命館大学 衣笠キャンパス 地図"
-        src="https://maps.google.com/maps?q=%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9&z=16&output=embed"
+        src="https://maps.google.com/maps?q=35.0324,135.7250+(%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6+%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9)&z=16&hl=ja&output=embed"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <p class="maplink"><a href="https://maps.google.com/maps?q=%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9" target="_blank" rel="noopener">Googleマップで開く ↗</a></p>
     </div>

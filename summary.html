@@ -79,6 +79,8 @@
   .hero .meta-line{margin-top:56px;font-size:14.5px;font-weight:400;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
   .hero .meta-line .mono{font-family:var(--mono);letter-spacing:.16em;color:var(--ink);}
   .hero .meta-line .sep{color:var(--hai);}
+  .hero .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:44px;}
+  .hero .hero-cta .btn{margin-top:0;}
   .btn{display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:500;font-size:13.5px;
     padding:15px 46px;border:1px solid var(--ink);cursor:pointer;transition:opacity .15s,background .15s,color .15s;letter-spacing:.14em;margin-top:44px;}
   .btn:hover{opacity:.82;}
@@ -228,7 +230,7 @@
       <tr><th>主催</th><td>一般社団法人 日本デザイン学会</td></tr>
       <tr><th>共催</th><td>立命館大学 デザイン・アート学部</td></tr>
       <tr><th>実行委員会</th><td>
-        <span class="nw">上平崇仁</span>　<span class="nw">八重樫文</span>　<span class="nw">井登友一</span>　<span class="nw">大島陽</span>　<span class="nw">迎山和司</span>　<span class="nw">小田裕和</span>　<span class="nw">中山郁英</span>　<span class="nw">野々山正章</span>　<span class="nw">磯邉美香</span><br>
+        <span class="nw">上平崇仁</span>　<span class="nw">八重樫文</span>　<span class="nw">井登友一</span>　<span class="nw">大島陽</span>　<span class="nw">小田裕和</span>　<span class="nw">中山郁英</span>　<span class="nw">野々山正章</span>　<span class="nw">磯邉美香</span><br>
         <span style="color:var(--sub);font-size:13px;" class="nw">（立命館大学 デザイン・アート学部／研究科）</span>
       </td></tr>
     </table>
@@ -236,9 +238,33 @@
 
   <section class="wrap" style="padding-top:0;">
     <div class="label">FEE ─ 参加費</div>
-    <p>参加費・懇親会費は現在調整中です。申込み受付の開始（9月末頃）にあわせて、このページでご案内します。</p>
-    <p style="margin-top:32px;"><span class="soon">準備中 ─ COMING SOON</span></p>
-    <!-- 金額確定後：fee-card（大会参加費／懇親会費／学生プロポジション発表費）をここに配置 -->
+    <div class="cols">
+      <div class="fee-card">
+        <h3 class="sub">大会参加費</h3>
+        <table class="wf">
+          <tr><th>学生</th><td>無料</td></tr>
+          <tr><th>会員</th><td>1,000円</td></tr>
+          <tr><th>非会員</th><td>3,000円</td></tr>
+          <tr><th>名誉会員</th><td>無料</td></tr>
+        </table>
+      </div>
+      <div class="fee-card">
+        <h3 class="sub">懇親会参加費</h3>
+        <table class="wf">
+          <tr><th>学生</th><td>無料</td></tr>
+          <tr><th>会員・非会員</th><td>1,000円</td></tr>
+        </table>
+      </div>
+      <div class="fee-card">
+        <h3 class="sub">発表費</h3>
+        <table class="wf">
+          <tr><th><span class="nw">学生プロポジション</span><span class="nw">発表者</span></th><td>500円</td></tr>
+          <tr><th><span class="nw">ZINE出展者</span><span class="nw">（学生）</span></th><td>500円</td></tr>
+          <tr><th><span class="nw">ZINE出展者</span><span class="nw">（会員／非会員）</span></th><td>1,000円</td></tr>
+        </table>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--sub);margin-top:16px;">※お支払いは <a href="https://peatix.com/event/5201823" target="_blank" rel="noopener">Peatix</a> による事前決済です。ZINE出展はブース数に限りがあるため先着50名限定です。</p>
   </section>
 </div>
 </main>
