@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 正式告知まで検索非表示（告知時にこの行と robots.txt を解除する） -->
 <meta name="robots" content="noindex, nofollow">
 <title>スケジュール｜2026年度 日本デザイン学会 秋季企画大会</title>
 <meta name="description" content="受付9:00開始。開会式・表彰式、トークセッション、学生プロポジション、ZINE即売会、懇親会までの当日タイムテーブル。">
@@ -12,17 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* VI「砂嵐のなかの問い」準拠。カラーは3色のみ、追加しない。
-       墨 Sumi=答えの出ていない時間／骨白 Kotsujiro=思考し続ける者たちの灯／灰 Hai=「（未だ）」の留保。
-       強調は色ではなく、大きさ・書体・不透明度（溶解）で行う。 */
-    --bg:#14110d;            /* 墨 Sumi */
-    --ink:#f2efe9;           /* 骨白 Kotsujiro */
-    --hai:#8a847a;           /* 灰 Hai */
+    --bg:#14110d;            
+    --ink:#f2efe9;           
+    --hai:#8a847a;           
     --sub:var(--hai);
     --panel:#1b1813; --panel-2:#201c16; --line:#332e25;
     --sans:"Noto Sans JP","游ゴシック",YuGothic,"Hiragino Sans",sans-serif;
-    --mincho:"Shippori Mincho B1","Hiragino Mincho ProN",serif;   /* 問いの声 */
-    --mono:"IBM Plex Mono",monospace;                              /* メタ情報 */
+    --mincho:"Shippori Mincho B1","Hiragino Mincho ProN",serif;   
+    --mono:"IBM Plex Mono",monospace;                              
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.85;font-weight:300;
@@ -31,14 +27,9 @@
   a:hover{text-decoration-color:var(--ink);}
   b,strong{font-weight:500;}
   img{max-width:100%;}
-  /* 名前・単語の途中で改行させないための単位指定 */
   .nw{white-space:nowrap;}
-
-  /* 準備中チップ */
   .soon{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;color:var(--hai);
     border:1px dashed #4a4438;padding:13px 28px;}
-
-  /* header */
   header{position:sticky;top:0;z-index:20;background:rgba(20,17,13,.88);backdrop-filter:saturate(160%) blur(10px);
     border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px 32px;}
   .brand{display:flex;align-items:center;font-weight:500;font-size:14.5px;letter-spacing:.04em;}
@@ -51,16 +42,13 @@
   nav a:hover{color:var(--ink);}
   nav a.active{color:var(--ink);border-bottom-color:var(--ink);font-weight:500;}
   .menu-btn{display:none;border:1px solid var(--hai);background:transparent;color:var(--ink);padding:8px 12px;font-size:13px;cursor:pointer;}
-
   main{min-height:60vh;}
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-
   .wrap{max-width:1040px;margin:0 auto;padding-left:40px;padding-right:40px;}
   section{padding:92px 0;}
   .pagehead{border-bottom:1px solid var(--line);padding:96px 0 72px;}
   .pagehead h2{font-family:var(--mincho);font-size:34px;font-weight:600;letter-spacing:.08em;}
   .pagehead .en{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.34em;color:var(--hai);font-weight:400;margin-bottom:18px;}
-
   .label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.3em;color:var(--hai);margin-bottom:32px;position:relative;padding-bottom:16px;}
   .label::after{content:"";position:absolute;left:0;bottom:0;width:32px;height:1px;background:var(--hai);}
   h3.sub{font-family:var(--mincho);font-size:16.5px;font-weight:600;margin-bottom:18px;letter-spacing:.04em;}
@@ -68,8 +56,6 @@
   .theme-title .mada{color:var(--hai);}
   .page section > p{max-width:74ch;}
   .page section > p + p{margin-top:20px;}
-
-  /* hero ─ 文字のみのシンプル構成（余白を恐れない） */
   .hero{position:relative;border-bottom:1px solid var(--line);}
   .hero-inner{position:relative;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
   .hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;color:var(--hai);margin-bottom:44px;}
@@ -86,14 +72,10 @@
   .btn:hover{opacity:.82;}
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(242,239,233,.5);}
   .btn.ghost:hover{background:var(--ink);color:var(--bg);opacity:1;}
-
-  /* news */
   .news{list-style:none;}
   .news li{display:flex;gap:28px;padding:20px 4px;border-bottom:1px solid var(--line);font-size:14.5px;}
   .news .date{flex:0 0 8em;color:var(--hai);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;padding-top:3px;}
   .center{text-align:center;}
-
-  /* tables */
   table.wf{width:100%;border-collapse:collapse;font-size:14.5px;}
   table.wf th,table.wf td{border-bottom:1px solid var(--line);padding:18px 22px;text-align:left;vertical-align:top;}
   table.wf th{background:transparent;width:230px;font-weight:500;color:var(--hai);}
@@ -104,8 +86,6 @@
   .fee-card table.wf th,.fee-card table.wf td{background:transparent;border-bottom:1px solid var(--line);padding:13px 0;}
   .fee-card table.wf th{width:auto;}
   .fee-card table.wf tr:last-child th,.fee-card table.wf tr:last-child td{border-bottom:none;}
-
-  /* access ─ タブ（大学までの道のり／学内のご案内） */
   .subtabs{display:flex;border-bottom:1px solid var(--line);margin:48px 0 52px;}
   .subtab{background:none;border:none;color:var(--hai);font-family:var(--sans);font-size:14.5px;font-weight:500;
     letter-spacing:.06em;padding:14px 28px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;
@@ -114,8 +94,6 @@
   .subtab.active{color:var(--ink);border-bottom-color:var(--ink);font-weight:700;}
   .tabpane{display:none;}
   .tabpane.active{display:block;animation:fade .3s ease;}
-
-  /* 使用会場 ─ 建物ごとに「何がどこで行われるか」を示すカード */
   .venues{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
   .venue-card{background:var(--panel);border-radius:8px;padding:30px 32px;}
   .venue-card .v-bldg{font-family:var(--mincho);font-size:20px;font-weight:600;letter-spacing:.05em;}
@@ -125,17 +103,14 @@
     padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
   .venue-card li:last-child{border-bottom:none;padding-bottom:0;}
   .venue-card .v-where{color:var(--hai);font-size:13px;white-space:nowrap;}
-
   .route{max-width:640px;}
   .route h4{font-size:14px;font-weight:700;margin:0 0 10px;}
   .route h4:not(:first-child){margin-top:26px;}
   .route ul{list-style:none;font-size:13.5px;margin-bottom:4px;}
   .route li{padding:10px 0;border-bottom:1px solid var(--line);line-height:1.7;}
   iframe.map{width:100%;height:300px;border:1px solid var(--line);border-radius:6px;display:block;
-    filter:grayscale(1) brightness(.82) contrast(1.05);}   /* 墨基調に馴染むグレースケール・やや暗め */
+    filter:grayscale(1) brightness(.82) contrast(1.05);}   
   .maplink{font-size:12px;margin-top:8px;}
-
-  /* timeline ─ 粒子（骨白の点）が縦線上に灯る */
   .tl{border-left:1px solid var(--line);margin-left:118px;margin-top:16px;}
   .tl .item{position:relative;padding:0 0 52px 36px;}
   .tl .item:last-child{padding-bottom:0;}
@@ -144,23 +119,17 @@
   .tl h4{font-family:var(--mincho);font-size:18px;font-weight:600;margin-bottom:10px;line-height:1.6;letter-spacing:.04em;}
   .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;max-width:64ch;}
   .venue-tag{font-family:var(--sans);font-size:12.5px;font-weight:400;color:var(--hai);margin-left:6px;white-space:nowrap;}
-
-  /* forms */
   .entry-block{background:var(--panel);border-radius:10px;padding:40px 44px;margin-bottom:32px;}
   .form-row{margin-bottom:22px;}
   .form-row label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;}
   .req{color:var(--hai);background:transparent;border:1px solid var(--hai);font-size:10px;padding:1px 7px;margin-left:8px;vertical-align:middle;letter-spacing:.1em;}
   .form-row .field{border:1px solid var(--line);background:var(--bg);height:44px;border-radius:4px;}
   .form-row .field.area{height:130px;}
-
-  /* placeholder (未確定) — 灰＋点線。色は追加しない */
   .tbd{color:var(--hai);border-bottom:1px dotted #5b554b;}
   .note{font-size:12px;color:var(--hai);margin-top:36px;padding:4px 0 4px 16px;border-left:1px solid var(--line);line-height:1.9;font-weight:300;}
-
   footer{border-top:1px solid var(--line);padding:64px 32px 56px;text-align:center;font-size:12.5px;color:var(--hai);font-weight:300;}
   footer .fmono{font-family:var(--mono);font-size:10.5px;letter-spacing:.34em;color:var(--hai);margin-bottom:20px;}
   footer .fbrand{font-family:var(--mincho);font-weight:600;color:var(--ink);font-size:15px;margin-bottom:12px;letter-spacing:.06em;}
-
   @media (max-width:900px){
     header{padding:12px 18px;}
     .brand span:last-child{font-size:12.5px;line-height:1.4;}
@@ -177,11 +146,9 @@
     .pagehead{padding:60px 0 48px;}
     .pagehead h2{font-size:26px;}
     .cols{gap:22px;}
-    /* 積みテーブルは「項目名（小・灰）＋内容」をひと組に見せる */
     table.wf th,table.wf td{display:block;width:100%;}
     table.wf th{width:100%;padding:16px 18px 3px;border-bottom:none;font-size:12px;letter-spacing:.06em;}
     table.wf td{padding:3px 18px 18px;}
-    /* タブは幅全体を等分し、ラベルは各タブの中央に */
     .subtab{flex:1 1 0;padding:14px 8px;text-align:center;}
     .venues{grid-template-columns:1fr;gap:18px;}
     .venue-card{padding:24px 22px;}
@@ -218,7 +185,7 @@
         <h4>受付開始 <span class="venue-tag">＠以学館ホール</span></h4>
       </div>
       <div class="item"><span class="time">09:30 - 10:30</span>
-        <h4><span class="nw">開会式／表彰式／</span><span class="nw">客員会員証授与式</span> <span class="venue-tag">＠以学館ホール</span></h4>
+        <h4><span class="nw">開会式／表彰式／客員会員証授与式</span> <span class="venue-tag">＠以学館ホール</span></h4>
         <p>審査結果説明：<span class="nw">松岡由幸</span>（<span class="nw">学会各賞選考委員会委員長</span>）</p>
       </div>
       <div class="item"><span class="time">10:30 - 12:00</span>
