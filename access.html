@@ -12,6 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* VI「砂嵐のなかの問い」準拠。カラーは3色のみ、追加しない。
+       墨 Sumi=答えの出ていない時間／骨白 Kotsujiro=思考し続ける者たちの灯／灰 Hai=「（未だ）」の留保。
+       強調は色ではなく、大きさ・書体・不透明度（溶解）で行う。 */
     --bg:#14110d;            /* 墨 Sumi */
     --ink:#f2efe9;           /* 骨白 Kotsujiro */
     --hai:#8a847a;           /* 灰 Hai */
@@ -239,9 +242,9 @@
 
       <div class="label" style="margin-top:56px;">周辺地図</div>
       <iframe class="map" style="height:380px;" title="立命館大学 衣笠キャンパス 地図"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d209362.42727349928!2d135.4788917112089!3d34.92431523719786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60010788853cacb7%3A0x2ab88ac2799b9009!2z56uL5ZG96aSo5aSn5a2m!5e0!3m2!1sja!2sjp!4v1786089888700!5m2!1sja!2sjp"
+        src="https://maps.google.com/maps?q=%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9&z=16&output=embed"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <p class="maplink"><a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d209362.42727349928!2d135.4788917112089!3d34.92431523719786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60010788853cacb7%3A0x2ab88ac2799b9009!2z56uL5ZG96aSo5aSn5a2m!5e0!3m2!1sja!2sjp!4v1786089888700!5m2!1sja!2sjp"  target="_blank" rel="noopener">Googleマップで開く ↗</a></p>
+      <p class="maplink"><a href="https://maps.google.com/maps?q=%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9" target="_blank" rel="noopener">Googleマップで開く ↗</a></p>
     </div>
 
     <!-- 後半：学内のご案内 -->
@@ -251,6 +254,8 @@
         <div class="venue-card">
           <h4 class="v-bldg">以学館<span class="v-en">IGAKUKAN</span></h4>
           <ul>
+            <li><span class="v-what">受付<span style="color:var(--hai);">（9:00〜）</span></span><span class="v-where">ホール</span></li>
+            <li><span class="v-what"><span class="nw">開会式／表彰式／</span><span class="nw">客員会員証授与式</span></span><span class="v-where">ホール</span></li>
             <li><span class="v-what">トークセッション</span><span class="v-where">ホール</span></li>
           </ul>
         </div>
@@ -259,11 +264,11 @@
           <ul>
             <li><span class="v-what">学生プロポジション</span><span class="v-where">B1（JK001／002／003）</span></li>
             <li><span class="v-what">ZINE即売会／書籍販売</span><span class="v-where">1F DAギャラリー</span></li>
+            <li><span class="v-what">閉会式</span><span class="v-where">B1（JK001）</span></li>
             <li><span class="v-what">懇親会</span><span class="v-where">B1（JK001）</span></li>
           </ul>
         </div>
       </div>
-      <p style="font-size:12.5px;color:var(--hai);margin-top:18px;">※受付場所は後日ご案内します。</p>
 
       <div class="label" style="margin-top:56px;">構内マップ</div>
       <img src="assets/kinugasa-campus-map.svg" alt="衣笠キャンパス構内マップ。会場の以学館と充光館の位置を示しています。"
