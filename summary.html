@@ -54,7 +54,6 @@
   h3.sub{font-family:var(--mincho);font-size:16.5px;font-weight:600;margin-bottom:18px;letter-spacing:.04em;}
   .theme-title{font-family:var(--mincho);font-size:24px;font-weight:600;line-height:1.7;letter-spacing:.04em;margin-bottom:30px;}
   .theme-title .mada{color:var(--hai);}
-  .page section > p{max-width:74ch;}
   .page section > p + p{margin-top:20px;}
   .hero{position:relative;border-bottom:1px solid var(--line);}
   .hero-inner{position:relative;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
@@ -103,7 +102,6 @@
     padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
   .venue-card li:last-child{border-bottom:none;padding-bottom:0;}
   .venue-card .v-where{color:var(--hai);font-size:13px;white-space:nowrap;}
-  .route{max-width:640px;}
   .route h4{font-size:14px;font-weight:700;margin:0 0 10px;}
   .route h4:not(:first-child){margin-top:26px;}
   .route ul{list-style:none;font-size:13.5px;margin-bottom:4px;}
@@ -117,7 +115,7 @@
   .tl .item::before{content:"";position:absolute;left:-4px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.9;}
   .tl .time{position:absolute;left:-150px;top:3px;width:126px;text-align:right;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--hai);letter-spacing:.12em;line-height:1.7;}
   .tl h4{font-family:var(--mincho);font-size:18px;font-weight:600;margin-bottom:10px;line-height:1.6;letter-spacing:.04em;}
-  .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;max-width:64ch;}
+  .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;}
   .venue-tag{font-family:var(--sans);font-size:12.5px;font-weight:400;color:var(--hai);margin-left:6px;white-space:nowrap;}
   .entry-block{background:var(--panel);border-radius:10px;padding:40px 44px;margin-bottom:32px;}
   .form-row{margin-bottom:22px;}
@@ -159,6 +157,7 @@
     .tl .time{position:static;display:block;width:auto;text-align:left;margin-bottom:7px;}
     .tl .time br{display:none;}
   }
+  body{word-break:keep-all;overflow-wrap:anywhere;line-break:strict;}
 </style>
 </head>
 <body>
@@ -181,24 +180,24 @@
 
   <section class="wrap">
     <div class="label">MESSAGE ─ 大会テーマ</div>
-    <h3 class="theme-title"><span class="nw">未来にデザインは</span><span class="nw"><span class="mada">（未だ）</span>あるのか？</span><br><span style="font-family:var(--mono);font-size:13px;letter-spacing:.28em;color:var(--hai);">WILL DESIGN STILL MATTER?</span></h3>
-    <p>生成AIの実利用が急速に進み、人間の知性が大きく揺さぶられる時代になりました。これまで人間がかたちづくってきた幅広い領域が、AIによって代替されるようになっています。こうした変化は、デザインの方法や職能を変えるだけではありません。そもそも何をデザインと呼ぶのか、デザインの主体は誰なのかという、これまで自明視されてきた前提そのものの問い直しを突きつけます。</p>
-    <p>人間の関与が縮小していく未来においても、人間のデザイナーによる営みは残るのでしょうか。AIが主体的に構想や生成、評価や修正まで担うとき、その一連の過程はどこまでデザインと呼べるのでしょうか。デザイン研究とデザイン教育は、これからどのような問いを扱うべきなのでしょうか。</p>
-    <p>いま起きているのは、単なる技術革新ではなく、近代以降のデザインを成り立たせてきた前提の変化です。本大会では、今まさに揺さぶられつつあるその前提を直視し、デザインという営み、専門性、教育、研究の行方をあらためて検討します。</p>
+    <h3 class="theme-title"><span class="nw">未来に​デザインは</span><span class="nw"><span class="mada">（未だ）</span>あるのか？</span><br><span style="font-family:var(--mono);font-size:13px;letter-spacing:.28em;color:var(--hai);">WILL DESIGN STILL MATTER?</span></h3>
+    <p>生成AIの​実利用が​急速に​進み、​人間の​知性が​大きく​揺さぶられる​時代に​なりました。​これまで​人間が​かたちづくってきた​幅​広い​領域が、​AIに​よって​代替されるようになっています。​こうした​変化は、​デザインの​方​法や​職能を​変えるだけでは​ありません。​そも​そも​何を​デザインと​呼ぶのか、​デザインの​主体は​誰なのかと​いう、​これまで​自明視されてきた​前提​その​ものの​問い​直しを​突きつけます。</p>
+    <p>人間の​関与が​縮小していく​未来に​おいても、​人間の​デザイナーに​よる​営みは​残るのでしょうか。​AIが​主体的に​構想や​生成、​評価や​修正まで​担う​とき、​その​一連の​過程は​どこまで​デザインと​呼べるのでしょうか。​デザイン研究と​デザイン教育は、​これから​どのような​問いを​扱うべきなのでしょうか。</p>
+    <p>いま起きているのは、​単なる​技術革新ではなく、​近代以降の​デザインを​成り立たせてきた​前提の​変化です。​本大会では、​今まさに​揺さぶられつつある​その前提を​直視し、​デザインと​いう​営み、​専門性、​教育、​研究の​行方を​あらためて​検討します。</p>
   </section>
 
   <section class="wrap" style="padding-top:0;">
     <div class="label">OUTLINE ─ 開催情報</div>
     <table class="wf">
-      <tr><th>テーマ</th><td><span class="nw">未来にデザインは（未だ）あるのか</span><span class="nw">―Will Design Still Matter?</span></td></tr>
-      <tr><th>開催方式</th><td>対面開催</td></tr>
-      <tr><th>日時</th><td><span class="nw">2026年11月15日（日）</span><span class="nw">9:30〜18:30</span><span style="color:var(--hai);">　<span class="nw">（受付開始 9:00）</span></span></td></tr>
+      <tr><th>テーマ</th><td><span class="nw">未来に​デザインは​（未だ）​あるのか</span><span class="nw">―Will Design Still Matter?</span></td></tr>
+      <tr><th>開催方​式</th><td>対面開催</td></tr>
+      <tr><th>日時</th><td><span class="nw">2026年11月15日​（日）</span><span class="nw">9:30〜18:30</span><span style="color:var(--hai);">　<span class="nw">（受付開始 9:00）</span></span></td></tr>
       <tr><th>場所</th><td>立命館大学 衣笠キャンパス<br>〒603-8577 京都府京都市北区等持院北町56-1</td></tr>
       <tr><th>主催</th><td>一般社団法人 日本デザイン学会</td></tr>
       <tr><th>共催</th><td>立命館大学 デザイン・アート学部</td></tr>
       <tr><th>実行委員会</th><td>
         <span class="nw">上平崇仁</span>　<span class="nw">八重樫文</span>　<span class="nw">井登友一</span>　<span class="nw">大島陽</span>　<span class="nw">小田裕和</span>　<span class="nw">中山郁英</span>　<span class="nw">野々山正章</span>　<span class="nw">磯邉美香</span><br>
-        <span style="color:var(--sub);font-size:13px;" class="nw">（立命館大学 デザイン・アート学部／研究科）</span>
+        <span style="color:var(--sub);font-size:13px;" class="nw">（立命館大学 デザイン・アート学部​／研究科）</span>
       </td></tr>
     </table>
   </section>
@@ -231,7 +230,7 @@
         </table>
       </div>
     </div>
-    <p style="font-size:12.5px;color:var(--sub);margin-top:16px;">※お支払いは <a href="https://peatix.com/event/5201823" target="_blank" rel="noopener">Peatix</a> による事前決済です。ZINE出展はブース数に限りがあるため先着50名限定です。</p>
+    <p style="font-size:12.5px;color:var(--sub);margin-top:16px;">※お支払いは​ <a href="https://peatix.com/event/5201823" target="_blank" rel="noopener">Peatix</a> に​よる​事前決済です。​ZINE出展は​ブース数に​限りが​ある​ため先着50名限定です。</p>
   </section>
 </div>
 </main>

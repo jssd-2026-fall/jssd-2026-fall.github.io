@@ -54,7 +54,6 @@
   h3.sub{font-family:var(--mincho);font-size:16.5px;font-weight:600;margin-bottom:18px;letter-spacing:.04em;}
   .theme-title{font-family:var(--mincho);font-size:24px;font-weight:600;line-height:1.7;letter-spacing:.04em;margin-bottom:30px;}
   .theme-title .mada{color:var(--hai);}
-  .page section > p{max-width:74ch;}
   .page section > p + p{margin-top:20px;}
   .hero{position:relative;border-bottom:1px solid var(--line);}
   .hero-inner{position:relative;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
@@ -103,7 +102,6 @@
     padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
   .venue-card li:last-child{border-bottom:none;padding-bottom:0;}
   .venue-card .v-where{color:var(--hai);font-size:13px;white-space:nowrap;}
-  .route{max-width:640px;}
   .route h4{font-size:14px;font-weight:700;margin:0 0 10px;}
   .route h4:not(:first-child){margin-top:26px;}
   .route ul{list-style:none;font-size:13.5px;margin-bottom:4px;}
@@ -117,7 +115,7 @@
   .tl .item::before{content:"";position:absolute;left:-4px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.9;}
   .tl .time{position:absolute;left:-150px;top:3px;width:126px;text-align:right;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--hai);letter-spacing:.12em;line-height:1.7;}
   .tl h4{font-family:var(--mincho);font-size:18px;font-weight:600;margin-bottom:10px;line-height:1.6;letter-spacing:.04em;}
-  .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;max-width:64ch;}
+  .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;}
   .venue-tag{font-family:var(--sans);font-size:12.5px;font-weight:400;color:var(--hai);margin-left:6px;white-space:nowrap;}
   .entry-block{background:var(--panel);border-radius:10px;padding:40px 44px;margin-bottom:32px;}
   .form-row{margin-bottom:22px;}
@@ -159,6 +157,7 @@
     .tl .time{position:static;display:block;width:auto;text-align:left;margin-bottom:7px;}
     .tl .time br{display:none;}
   }
+  body{word-break:keep-all;overflow-wrap:anywhere;line-break:strict;}
 </style>
 </head>
 <body>
@@ -179,47 +178,47 @@
 <div class="page">
   <div class="pagehead"><div class="wrap"><span class="en">ACCESS</span><h2>アクセス</h2></div></div>
   <section class="wrap">
-    <p>会場は立命館大学 衣笠キャンパスの「以学館」と「充光館」の2棟です。</p>
+    <p>会場は​立命館大学 衣笠キャンパスの​「以学館」と​「充光館」の​2棟です。</p>
 
     <div class="subtabs" role="tablist">
-      <button class="subtab active" data-tab="way" role="tab" aria-selected="true">大学までの道のり</button>
-      <button class="subtab" data-tab="campus" role="tab" aria-selected="false">学内のご案内</button>
+      <button class="subtab active" data-tab="way" role="tab" aria-selected="true">大学までの​道のり</button>
+      <button class="subtab" data-tab="campus" role="tab" aria-selected="false">学内の​ご案内</button>
     </div>
 
     <div class="tabpane active" id="tab-way">
-      <div class="label">交通のご案内</div>
+      <div class="label">交通の​ご案内</div>
       <div class="route">
-        <h4>JR・近鉄「京都」駅から</h4>
+        <h4>JR・近鉄​「京都」​駅から</h4>
         <ul>
-          <li>市バス・JRバス「快速 立命館」─<span class="nw">「立命館大学前」下車（終点）</span><span class="nw">約36分</span></li>
-          <li>市バス50系統 ─<span class="nw">「立命館大学前」下車（終点）</span><span class="nw">約42分</span></li>
-          <li>市バス205系統 ─<span class="nw">「衣笠校前」下車</span> <span class="nw">徒歩約10分／約38分</span></li>
+          <li>市バス・​JRバス「快速 立命館」​─<span class="nw">「立命館大学前」​下車​（終点）</span><span class="nw">約36分</span></li>
+          <li>市バス50系統 ─<span class="nw">「立命館大学前」​下車​（終点）</span><span class="nw">約42分</span></li>
+          <li>市バス205系統 ─<span class="nw">「衣笠校前」​下車</span> <span class="nw">徒歩約10分／約38分</span></li>
         </ul>
-        <h4>阪急「西院（さいいん）」駅から</h4>
+        <h4>阪急​「西院​（さい​いん）」​駅から</h4>
         <ul>
-          <li>市バス・JRバス「快速 立命館」─<span class="nw">「立命館大学前」下車（終点）</span><span class="nw">約15分</span></li>
-          <li>市バス205系統 ─<span class="nw">「衣笠校前」下車</span> <span class="nw">徒歩約10分／約13分</span></li>
+          <li>市バス・​JRバス「快速 立命館」​─<span class="nw">「立命館大学前」​下車​（終点）</span><span class="nw">約15分</span></li>
+          <li>市バス205系統 ─<span class="nw">「衣笠校前」​下車</span> <span class="nw">徒歩約10分／約13分</span></li>
         </ul>
         <h4>嵐電（京福電車）から</h4>
         <ul>
           <li>北野線<span class="nw">「等持院・立命館大学衣笠キャンパス前」</span><span class="nw">駅下車 徒歩約7分</span></li>
         </ul>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">※キャンパス内に来客用駐車場はありません。公共交通機関をご利用ください。</p>
-        <p style="font-size:12px;color:var(--sub);margin-top:4px;">※11月15日は日曜のため、平日と運行ダイヤが異なります。時間に余裕をもってお越しください。</p>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">※キャンパス内に​来客用駐車場は​ありません。​公共交通機関を​ご利用ください。</p>
+        <p style="font-size:12px;color:var(--sub);margin-top:4px;">※11月15日は​日曜の​ため、​平日と​運行ダイヤが​異なります。​時間に​余裕を​もってお越しください。</p>
       </div>
 
       <div class="label" style="margin-top:56px;">周辺地図</div>
       <iframe class="map" style="height:380px;" title="立命館大学 衣笠キャンパス 地図"
         src="https://maps.google.com/maps?q=35.0324,135.7250+(%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6+%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9)&z=16&hl=ja&output=embed"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <p class="maplink"><a href="https://maps.google.com/maps?q=%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9" target="_blank" rel="noopener">Googleマップで開く ↗</a></p>
+      <p class="maplink"><a href="https://maps.google.com/maps?q=%E7%AB%8B%E5%91%BD%E9%A4%A8%E5%A4%A7%E5%AD%A6%E8%A1%A3%E7%AC%A0%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9" target="_blank" rel="noopener">Googleマップで​開く​ ↗</a></p>
     </div>
 
     <div class="tabpane" id="tab-campus">
       <div class="label">使用会場</div>
       <div class="venues">
         <div class="venue-card">
-          <h4 class="v-bldg">以学館<span class="v-en">IGAKUKAN</span></h4>
+          <h4 class="v-bldg">以学​館<span class="v-en">IGAKUKAN</span></h4>
           <ul>
             <li><span class="v-what">受付<span style="color:var(--hai);">（9:00〜）</span></span><span class="v-where">ホール</span></li>
             <li><span class="v-what"><span class="nw">開会式／表彰式／客員会員証授与式</span></span><span class="v-where">ホール</span></li>
@@ -240,7 +239,7 @@
       <div class="label" style="margin-top:56px;">構内マップ</div>
       <img src="assets/kinugasa-campus-map.svg" alt="衣笠キャンパス構内マップ。会場の以学館と充光館の位置を示しています。"
         style="width:100%;display:block;border:1px solid var(--line);">
-      <p style="font-size:12.5px;color:var(--hai);margin-top:16px;">※以学館と充光館のあいだで棟間移動があります。構内の順路は当日ご案内します。</p>
+      <p style="font-size:12.5px;color:var(--hai);margin-top:16px;">※以学館と​充光館の​あいだで​棟間移動が​あります。​構内の​順路は​当日ご案内します。</p>
     </div>
   </section>
 </div>

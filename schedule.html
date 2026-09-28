@@ -54,7 +54,6 @@
   h3.sub{font-family:var(--mincho);font-size:16.5px;font-weight:600;margin-bottom:18px;letter-spacing:.04em;}
   .theme-title{font-family:var(--mincho);font-size:24px;font-weight:600;line-height:1.7;letter-spacing:.04em;margin-bottom:30px;}
   .theme-title .mada{color:var(--hai);}
-  .page section > p{max-width:74ch;}
   .page section > p + p{margin-top:20px;}
   .hero{position:relative;border-bottom:1px solid var(--line);}
   .hero-inner{position:relative;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
@@ -103,7 +102,6 @@
     padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
   .venue-card li:last-child{border-bottom:none;padding-bottom:0;}
   .venue-card .v-where{color:var(--hai);font-size:13px;white-space:nowrap;}
-  .route{max-width:640px;}
   .route h4{font-size:14px;font-weight:700;margin:0 0 10px;}
   .route h4:not(:first-child){margin-top:26px;}
   .route ul{list-style:none;font-size:13.5px;margin-bottom:4px;}
@@ -117,7 +115,7 @@
   .tl .item::before{content:"";position:absolute;left:-4px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.9;}
   .tl .time{position:absolute;left:-150px;top:3px;width:126px;text-align:right;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--hai);letter-spacing:.12em;line-height:1.7;}
   .tl h4{font-family:var(--mincho);font-size:18px;font-weight:600;margin-bottom:10px;line-height:1.6;letter-spacing:.04em;}
-  .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;max-width:64ch;}
+  .tl p{font-size:13.5px;color:var(--hai);line-height:1.85;font-weight:300;}
   .venue-tag{font-family:var(--sans);font-size:12.5px;font-weight:400;color:var(--hai);margin-left:6px;white-space:nowrap;}
   .entry-block{background:var(--panel);border-radius:10px;padding:40px 44px;margin-bottom:32px;}
   .form-row{margin-bottom:22px;}
@@ -159,6 +157,7 @@
     .tl .time{position:static;display:block;width:auto;text-align:left;margin-bottom:7px;}
     .tl .time br{display:none;}
   }
+  body{word-break:keep-all;overflow-wrap:anywhere;line-break:strict;}
 </style>
 </head>
 <body>
@@ -179,18 +178,18 @@
 <div class="page">
   <div class="pagehead"><div class="wrap"><span class="en">SCHEDULE</span><h2>スケジュール</h2></div></div>
   <section class="wrap">
-    <p style="margin-bottom:40px;"><span style="color:var(--hai);">※プログラムは都合により一部変更となる場合があります。</span></p>
+    <p style="margin-bottom:40px;"><span style="color:var(--hai);">※プログラムは​都合に​より​一部​変更となる​場合が​あります。</span></p>
     <div class="tl">
       <div class="item"><span class="time">09:00</span>
-        <h4>受付開始 <span class="venue-tag">＠以学館ホール</span></h4>
+        <h4>受付開始 <span class="venue-tag">＠以学​館ホール</span></h4>
       </div>
       <div class="item"><span class="time">09:30 - 10:30</span>
-        <h4><span class="nw">開会式／表彰式／客員会員証授与式</span> <span class="venue-tag">＠以学館ホール</span></h4>
-        <p>審査結果説明：<span class="nw">松岡由幸</span>（<span class="nw">学会各賞選考委員会委員長</span>）</p>
+        <h4><span class="nw">開会式／表彰式／客員会員証授与式</span> <span class="venue-tag">＠以学​館ホール</span></h4>
+        <p>審査結果​説明：<span class="nw">松岡由幸</span>（<span class="nw">学会各賞選考委員会委員長</span>）</p>
       </div>
       <div class="item"><span class="time">10:30 - 12:00</span>
-        <h4>トークセッション <span class="venue-tag">＠以学館ホール</span></h4>
-        <p>キーノート対談：<span class="nw">塩瀬 隆之（京都大学）</span>× <span class="nw">福田 卓郎（SY Partners）</span></p>
+        <h4>トークセッション <span class="venue-tag">＠以学​館ホール</span></h4>
+        <p>キーノート​対談：<span class="nw">塩瀬 隆之​（京都大学）</span>× <span class="nw">福田 卓郎​（SY Partners）</span></p>
       </div>
       <div class="item"><span class="time">12:20 - 12:50</span>
         <h4>理事会</h4>
@@ -199,20 +198,20 @@
         <h4><span class="nw">ZINE即売会</span> <span class="nw">ピッチプレゼンテーション</span> <span class="venue-tag">＠充光館 1F DAギャラリー</span></h4>
       </div>
       <div class="item"><span class="time">13:20 - 16:40</span>
-        <h4><span class="nw">学生プロポジション</span><span class="nw">（ポスター発表）</span> <span class="venue-tag">＠充光館 B1（JK001／002／003）</span></h4>
-        <p><span class="nw">第1部 13:20〜14:20</span>／<span class="nw">第2部 14:30〜15:30</span>／<span class="nw">第3部 15:40〜16:40</span><br>
-        ポスター発表（900mm×900mm 以内）。学生（学部／修士／博士）限定の研究発表。プロトタイプ展示用の小型机も貸与します。※秋季大会では一般研究発表はありません。</p>
+        <h4><span class="nw">学生プロポジション</span><span class="nw">（ポスター発表）</span> <span class="venue-tag">＠充光館 B1​（JK001／002／003）</span></h4>
+        <p><span class="nw">第1部​ 13:20〜14:20</span>／<span class="nw">第2部​ 14:30〜15:30</span>／<span class="nw">第3部​ 15:40〜16:40</span><br>
+        ポスター発表​（900mm×900mm 以内）。​学生​（学部​／修士／博士）​限定の​研究発表。​プロトタイプ展示用の​小型机も​貸与します。​※秋季大会では​一般研究発表は​ありません。</p>
       </div>
       <div class="item"><span class="time">13:20 - 16:40</span>
         <h4>ZINE即売会／書籍販売 <span class="venue-tag">＠充光館 1F DAギャラリー</span></h4>
-        <p>学生プロポジションと並行して開催。自分たちのつくった冊子を販売できます（学生以外の出展もOK）。出版社ブースでのデザイン関連書籍販売もあります。</p>
+        <p>学生プロポジションと​並行して​開催。​自分たちの​つくった​冊子を​販売できます​（学生以外の​出展も​OK）。​出版社ブースでの​デザイン関連書籍販売も​あります。</p>
       </div>
       <div class="item"><span class="time">16:50 - 17:20</span>
-        <h4>閉会式 <span class="venue-tag">＠充光館 B1（JK001）</span></h4>
+        <h4>閉会式 <span class="venue-tag">＠充光館 B1​（JK001）</span></h4>
       </div>
       <div class="item"><span class="time">17:30 - 18:30</span>
-        <h4>懇親会 <span class="venue-tag">＠充光館 B1（JK001）</span></h4>
-        <p>軽食と飲み物をご用意します。参加者の交流やディスカッションの続きにご活用ください。※別途参加費が必要です。</p>
+        <h4>懇親会 <span class="venue-tag">＠充光館 B1​（JK001）</span></h4>
+        <p>軽食と​飲み物を​ご用意します。​参加者の​交流や​ディスカッションの​続きに​ご活用ください。​※別途参加費が​必要です。</p>
       </div>
     </div>
   </section>
