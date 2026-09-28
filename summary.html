@@ -55,7 +55,8 @@
   .theme-title{font-family:var(--mincho);font-size:24px;font-weight:600;line-height:1.7;letter-spacing:.04em;margin-bottom:30px;}
   .theme-title .mada{color:var(--hai);}
   .page section > p + p{margin-top:20px;}
-  .prose p{max-width:74ch;}
+  br.sp{display:none;}
+  .spgap{display:none;}
   .hero{position:relative;border-bottom:1px solid var(--line);}
   .hero-inner{position:relative;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
   .hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;color:var(--hai);margin-bottom:44px;}
@@ -140,6 +141,9 @@
     nav a.active{border-bottom:1px solid var(--line);border-left-color:var(--ink);}
     .wrap{padding-left:22px;padding-right:22px;}
     section{padding:60px 0;}
+    br.pc{display:none;}
+    br.sp{display:inline;}
+    .spgap{display:block;height:1.2em;}
     .hero-inner{padding:96px 22px 104px;}
     .hero .meta-line{margin-top:40px;}
     .pagehead{padding:60px 0 48px;}
@@ -179,18 +183,18 @@
 <div class="page">
   <div class="pagehead"><div class="wrap"><span class="en">ABOUT</span><h2>大会概要</h2></div></div>
 
-  <section class="wrap prose">
+  <section class="wrap">
     <div class="label">MESSAGE ─ 大会テーマ</div>
-    <h3 class="theme-title"><span class="nw">未来に​デザインは</span><span class="nw"><span class="mada">（未だ）</span>あるのか？</span><br><span style="font-family:var(--mono);font-size:13px;letter-spacing:.28em;color:var(--hai);">WILL DESIGN STILL MATTER?</span></h3>
-    <p>生成AIの​実利用が​急速に​進み、​人間の​知性が​大きく​揺さぶられる​時代に​なりました。​これまで​人間が​かたちづくってきた​幅​広い​領域が、​AIに​よって​代替されるようになっています。​こうした​変化は、​デザインの​方​法や​職能を​変えるだけでは​ありません。​そも​そも​何を​デザインと​呼ぶのか、​デザインの​主体は​誰なのかと​いう、​これまで​自明視されてきた​前提​その​ものの​問い​直しを​突きつけます。</p>
-    <p>人間の​関与が​縮小していく​未来に​おいても、​人間の​デザイナーに​よる​営みは​残るのでしょうか。​AIが​主体的に​構想や​生成、​評価や​修正まで​担う​とき、​その​一連の​過程は​どこまで​デザインと​呼べるのでしょうか。​デザイン研究と​デザイン教育は、​これから​どのような​問いを​扱うべきなのでしょうか。</p>
-    <p>いま起きているのは、​単なる​技術革新ではなく、​近代以降の​デザインを​成り立たせてきた​前提の​変化です。​本大会では、​今まさに​揺さぶられつつある​その前提を​直視し、​デザインと​いう​営み、​専門性、​教育、​研究の​行方を​あらためて​検討します。</p>
+    <h3 class="theme-title"><span class="nw">未来に​デザインは</span><wbr><span class="nw"><span class="mada">（未だ）</span>あるのか？</span><br><span style="font-family:var(--mono);font-size:13px;letter-spacing:.28em;color:var(--hai);">WILL DESIGN STILL MATTER?</span></h3>
+    <p>生成AIの​実利用が​急速に​進み、<br class="sp">人間の​知性が​大きく​揺さぶられる<br class="sp">時代に​なりました。<br class="pc"><span class="spgap"></span>これまで​人間が​かたちづくってきた<br class="sp">幅​広い​領域が、<br class="sp">AIに​よって​代替されるようになっています。<br class="pc"><span class="spgap"></span>こうした​変化は、​デザインの​方​法や​職能を<br class="sp">変えるだけでは​ありません。<br>そも​そも​何を​デザインと​呼ぶのか、<br class="sp">デザインの​主体は​誰なのかと​いう、<br>これまで​自明視されてきた​前提<br class="sp">その​ものの​問い​直しを​突きつけます。</p>
+    <p>人間の​関与が​縮小していく​未来に​おいても、<br class="sp">人間の​デザイナーに​よる​営みは<br class="sp">残るのでしょうか。<br class="pc"><span class="spgap"></span>AIが​主体的に​構想や​生成、<br class="sp">評価や​修正まで​担う​とき、<br>その​一連の​過程は​どこまで​デザインと<br class="sp">呼べるのでしょうか。<br>デザイン研究と​デザイン教育は、<br class="sp">これから​どのような​問いを<br class="sp">扱うべきなのでしょうか。</p>
+    <p>いま起きているのは、<br class="sp">単なる​技術革新ではなく、<br class="sp">近代以降の​デザインを​成り立たせてきた<br class="sp">前提の​変化です。<br class="pc"><span class="spgap"></span>本大会では、​今まさに<br class="sp">揺さぶられつつある​その前提を​直視し、<br>デザインと​いう​営み、​専門性、​教育、<br class="sp">研究の​行方を​あらためて​検討します。</p>
   </section>
 
   <section class="wrap" style="padding-top:0;">
     <div class="label">OUTLINE ─ 開催情報</div>
     <table class="wf">
-      <tr><th>テーマ</th><td><span class="nw">未来に​デザインは​（未だ）​あるのか</span><span class="nw">―Will Design Still Matter?</span></td></tr>
+      <tr><th>テーマ</th><td><span class="nw">未来に​デザインは​（未だ）​あるのか</span><wbr><span class="nw">―Will Design Still Matter?</span></td></tr>
       <tr><th>開催方​式</th><td>対面開催</td></tr>
       <tr><th>日時</th><td><span class="nw">2026年11月15日​（日）</span><span class="nw">9:30〜18:30</span><span style="color:var(--hai);">　<span class="nw">（受付開始 9:00）</span></span></td></tr>
       <tr><th>場所</th><td>立命館大学 衣笠キャンパス<br>〒603-8577 京都府京都市北区等持院北町56-1</td></tr>
@@ -225,9 +229,9 @@
       <div class="fee-card">
         <h3 class="sub">発表費</h3>
         <table class="wf">
-          <tr><th><span class="nw">学生プロポジション</span><span class="nw">発表者</span></th><td>500円</td></tr>
-          <tr><th><span class="nw">ZINE出展者</span><span class="nw">（学生）</span></th><td>500円</td></tr>
-          <tr><th><span class="nw">ZINE出展者</span><span class="nw">（会員／非会員）</span></th><td>1,000円</td></tr>
+          <tr><th><span class="nw">学生プロポジション</span><wbr><span class="nw">発表者</span></th><td>500円</td></tr>
+          <tr><th><span class="nw">ZINE出展者</span><wbr><span class="nw">（学生）</span></th><td>500円</td></tr>
+          <tr><th><span class="nw">ZINE出展者</span><wbr><span class="nw">（会員／非会員）</span></th><td>1,000円</td></tr>
         </table>
       </div>
     </div>
@@ -239,7 +243,7 @@
 <footer>
   <p class="fmono">WILL DESIGN STILL MATTER?</p>
   <p class="fbrand"><span class="nw">2026年度</span> <span class="nw">日本デザイン学会</span> <span class="nw">秋季企画大会</span> <span class="nw">in Kyoto</span></p>
-  <p><span class="nw">主催：一般社団法人 日本デザイン学会</span> ／ <span class="nw">共催：立命館大学 デザイン・アート学部</span></p>
+  <p><span class="nw">主催：一般社団法人 日本デザイン学会</span> ／<wbr> <span class="nw">共催：立命館大学 デザイン・アート学部</span></p>
   <p style="margin-top:10px;"><span class="nw">お問合せ：jssd2026fall@gmail.com</span></p>
 </footer>
 
