@@ -111,11 +111,12 @@
   iframe.map{width:100%;height:300px;border:1px solid var(--line);border-radius:6px;display:block;
     filter:grayscale(1) brightness(.82) contrast(1.05);}   
   .maplink{font-size:12px;margin-top:8px;}
-  .docwrap{height:74vh;min-height:460px;overflow:hidden;}
-  iframe.doc{width:100%;height:100%;border:0;display:block;
+  .docwrap{overflow:hidden;}
+  iframe.doc{width:100%;height:4000px;border:0;display:block;
     background:#fff;filter:grayscale(1) invert(.93) sepia(.16) contrast(1.02);}
   @media (min-width:901px){
-    iframe.doc{width:86.6%;height:86.6%;transform:scale(1.155);transform-origin:0 0;}
+    .docwrap{height:6006px;}
+    iframe.doc{width:86.6%;height:5200px;transform:scale(1.155);transform-origin:0 0;}
   }
   .tl{border-left:1px solid var(--line);margin-left:118px;margin-top:16px;}
   .tl .item{position:relative;padding:0 0 52px 36px;}
@@ -190,11 +191,11 @@
 <div class="page">
   <div class="pagehead"><div class="wrap"><span class="en">Q&amp;A</span><h2>よく​ある​ご質問</h2></div></div>
   <section class="wrap">
-    <p style="margin-bottom:28px;">これまでに​いただいた​ご質問への​回答を​まとめています​（随時更新）。​解決しない​場合は<a href="contact.html">お問合せ</a>より​ご連絡ください。</p>
+    <p style="margin-bottom:12px;">これまでに​いただいた​ご質問への​回答を​まとめています​（随時更新）。​解決しない​場合は<a href="contact.html">お問合せ</a>より​ご連絡ください。</p>
+    <p class="maplink" style="margin:0 0 28px;"><a href="https://docs.google.com/document/d/1tvORx6t5YRT-IsG3JvFL2DY8KQqSIZFLFl4042ufGXI/view" target="_blank" rel="noopener">別ウィンドウで​開く</a></p>
     <div class="docwrap"><iframe class="doc" title="よくあるご質問（Q&amp;A）"
       src="https://docs.google.com/document/d/1tvORx6t5YRT-IsG3JvFL2DY8KQqSIZFLFl4042ufGXI/preview"
       loading="lazy" referrerpolicy="no-referrer"></iframe></div>
-    <p class="maplink"><a href="https://docs.google.com/document/d/1tvORx6t5YRT-IsG3JvFL2DY8KQqSIZFLFl4042ufGXI/view" target="_blank" rel="noopener">別ウィンドウで​開く</a></p>
   </section>
 </div>
 </main>
@@ -212,9 +213,10 @@ document.querySelector(".menu-btn").addEventListener("click",()=>navEl.classList
 function fitDoc(){
   const w=document.querySelector(".docwrap"),f=document.querySelector("iframe.doc");
   if(!w||!f||!w.clientWidth)return;
-  if(window.innerWidth<=900){f.style.cssText="";return;}
+  if(window.innerWidth<=900){f.style.cssText="";w.style.cssText="";return;}
   const s=w.clientWidth/831;
-  f.style.cssText="width:831px;height:"+(w.clientHeight/s)+"px;transform:scale("+s+");transform-origin:0 0;";
+  f.style.cssText="width:831px;height:5200px;transform:scale("+s+");transform-origin:0 0;";
+  w.style.height=(5200*s)+"px";
 }
 window.addEventListener("resize",fitDoc);
 fitDoc();
