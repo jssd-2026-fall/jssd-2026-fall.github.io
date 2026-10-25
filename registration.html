@@ -111,6 +111,12 @@
   iframe.map{width:100%;height:300px;border:1px solid var(--line);border-radius:6px;display:block;
     filter:grayscale(1) brightness(.82) contrast(1.05);}   
   .maplink{font-size:12px;margin-top:8px;}
+  .docwrap{height:74vh;min-height:460px;overflow:hidden;}
+  iframe.doc{width:100%;height:100%;border:0;display:block;
+    background:#fff;filter:grayscale(1) invert(.93) sepia(.16) contrast(1.02);}
+  @media (min-width:901px){
+    iframe.doc{width:86.6%;height:86.6%;transform:scale(1.155);transform-origin:0 0;}
+  }
   .tl{border-left:1px solid var(--line);margin-left:118px;margin-top:16px;}
   .tl .item{position:relative;padding:0 0 52px 36px;}
   .tl .item:last-child{padding-bottom:0;}
@@ -175,6 +181,7 @@
     <li><a href="schedule.html">スケジュール</a></li>
     <li><a href="registration.html" class="active">申込み</a></li>
     <li><a href="access.html">アクセス</a></li>
+    <li><a href="qa.html">Q&A</a></li>
     <li><a href="contact.html">お問合せ</a></li>
   </ul></nav>
 </header>
@@ -186,7 +193,8 @@
   <section class="wrap">
     <p style="margin-bottom:16px;">各種​お申込み​（<span class="nw">参加登録</span>・<span class="nw">学生プロポジション発表</span>・<span class="nw">ZINE即売会出展</span>）は​ <b>Peatix</b> にて受付中です​（事前決済）。</p>
     <p style="margin-bottom:16px;"><a class="btn" style="margin-top:12px;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">Peatixで​申込む</a></p>
-    <p style="margin-bottom:48px;font-size:12.5px;color:var(--hai);">※チケット構成を​見直し、​学生の​発表者・出展者は​参加費を​含む​「<span class="nw">発表費／参加費</span>」​チケットに​統合しました。​旧「発表費」​チケットは​「申込終了」と​表示されますが、​発表・出展の​お申込み自体は​締切まで​受付中です。​ご購入済みの​旧チケットは​そのまま​有効です。​ただし、​ZINE即売会に​出展される​学生以外の​会員・非会員の​方​のみ、​別途大会参加費の​お申込みが​必要です。</p>
+    <p style="margin-bottom:16px;font-size:12.5px;color:var(--hai);">※チケット構成を​見直し、​学生の​発表者・出展者は​参加費を​含む​「<span class="nw">発表費／参加費</span>」​チケットに​統合しました。​旧「発表費」​チケットは​「申込終了」と​表示されますが、​発表・出展の​お申込み自体は​締切まで​受付中です。​ご購入済みの​旧チケットは​そのまま​有効です。​ただし、​ZINE即売会に​出展される​学生以外の​会員・非会員の​方​のみ、​別途大会参加費の​お申込みが​必要です。</p>
+    <p style="margin-bottom:48px;">お申込みに​関する​疑問は​「<a href="qa.html">よく​ある​ご質問​（Q&amp;A）</a>」も​あわせて​ご覧ください。</p>
 
     <div class="label">申込み締切</div>
     <table class="wf" style="margin-bottom:52px;">
@@ -215,8 +223,8 @@
         <tr><th>応募締切</th><td><span class="nw">2026年10月30日​（金）​23:59</span></td></tr>
         <tr><th>備考</th><td>秋季大会では​一般研究発表は​ありません。</td></tr>
       </table>
-      <p style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">発表登録​（Peatix）</a></p>
-      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">発表内容の​詳細​（タイトル・概要など）を​登録いただく​フォームを<b>週明けに​公開予定</b>です。​公開時は​本サイトの​お知らせで​ご案内します。</p>
+      <p style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">発表登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/pen3hjRA6RqJCgyw9" target="_blank" rel="noopener">発表詳細フォーム</a></p>
+      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">①Peatixで​発表登録の​うえ、​②発表内容の​詳細​（所属・氏名・発表題目など）を​発表詳細フォームから​ご登録ください。​要旨等の​事前提出は​ありません。</p>
     </div>
 
     <div class="entry-block">
@@ -229,7 +237,8 @@
         <tr><th>ブース</th><td>ブース数に​限りが​ある​ため、<b>先着50名限定</b>です。</td></tr>
         <tr><th>注意事項</th><td>値付けは​各自自由です。​売買に​関する​トラブルは​個人間の​責任で​お願いします​（日本デザイン学会／立命館大学は​責任を​負いません）。​対外的な​研究発表の​場に​そぐわない​もの​・公序良俗に​反する​コンテンツは​ご遠慮ください。</td></tr>
       </table>
-      <p style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">出展登録​（Peatix）</a></p>
+      <p style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">出展登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/b6SjaUdM48NiXRCn8" target="_blank" rel="noopener">出展詳細フォーム</a></p>
+      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">①Peatixで​出展登録の​うえ、​②出展内容の​詳細​（出展名義・頒布物の​概要など）を​出展詳細フォームから​ご登録ください。</p>
     </div>
 
     <p style="font-size:12.5px;color:var(--hai);">※発表者・出展者には、​Peatixを​通じて​ご連絡する​ことがあります。</p>
