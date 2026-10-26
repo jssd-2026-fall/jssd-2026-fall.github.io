@@ -73,6 +73,7 @@
   .btn:hover{opacity:.82;}
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(242,239,233,.5);}
   .btn.ghost:hover{background:var(--ink);color:var(--bg);opacity:1;}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;}   
   .news{list-style:none;}
   .news li{display:flex;gap:28px;padding:20px 4px;border-bottom:1px solid var(--line);font-size:14.5px;}
   .news .date{flex:0 0 8em;color:var(--hai);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;padding-top:3px;}
@@ -164,6 +165,8 @@
     .venue-card{padding:24px 22px;}
     .venue-card li{flex-direction:column;align-items:flex-start;gap:3px;}
     .entry-block{padding:28px 24px;}
+    .btn-row{flex-direction:column;}
+    .btn-row .btn{width:100%;text-align:center;}
     .tl{margin-left:4px;}
     .tl .item{padding-left:26px;padding-bottom:44px;}
     .tl .time{position:static;display:block;width:auto;text-align:left;margin-bottom:7px;}
@@ -200,8 +203,8 @@
     <div class="label">申込み締切</div>
     <table class="wf" style="margin-bottom:52px;">
       <tr><th><span class="nw">参加登録</span><wbr><span class="nw">（発表なし）</span></th><td><span class="nw">2026年11月13日​（金）​23:59</span></td></tr>
-      <tr><th><span class="nw">学生プロポジション</span><wbr><span class="nw">発表登録</span></th><td><span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
-      <tr><th><span class="nw">ZINE即売会</span> <span class="nw">出展登録</span></th><td><span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
+      <tr><th><span class="nw">学生プロポジション</span><wbr><span class="nw">発表登録</span></th><td><span class="nw" style="color:var(--hai);text-decoration:line-through;">2026年10月30日​（金）</span><wbr> <span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
+      <tr><th><span class="nw">ZINE即売会</span> <span class="nw">出展登録</span></th><td><span class="nw" style="color:var(--hai);text-decoration:line-through;">2026年10月30日​（金）</span><wbr> <span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
     </table>
 
     <div class="entry-block">
@@ -221,10 +224,10 @@
         <tr><th>発表形式</th><td>ポスター発表​（900mm × 900mm 以内）。​プロトタイプ展示用の​小型机も​貸与します。</td></tr>
         <tr><th>会場</th><td>充光館 B1​（JK001／002／003）</td></tr>
         <tr><th>発表費</th><td>500円​（大会参加費込み）<br><span style="color:var(--hai);font-size:13px;">「<span class="nw">発表費／参加費​（学生プロポジション発表者）</span>」​チケット1枚で​お申込みください。</span></td></tr>
-        <tr><th>応募締切</th><td><span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
+        <tr><th>応募締切</th><td><span class="nw" style="color:var(--hai);text-decoration:line-through;">2026年10月30日​（金）</span><wbr> <span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
         <tr><th>備考</th><td>秋季大会では​一般研究発表は​ありません。</td></tr>
       </table>
-      <p style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">発表登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/pen3hjRA6RqJCgyw9" target="_blank" rel="noopener">発表詳細フォーム</a> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
+      <p class="btn-row" style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">発表登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/pen3hjRA6RqJCgyw9" target="_blank" rel="noopener">発表詳細フォーム</a> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
       <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">①Peatixで​発表登録の​うえ、​②発表内容の​詳細​（所属・氏名・発表題目など）を​発表詳細フォームから​ご登録ください。​要旨等の​事前提出は​ありません。​当日の​発表方​法は<a href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a>を​ご覧ください。</p>
     </div>
 
@@ -234,11 +237,11 @@
       <table class="wf" style="margin-top:16px;">
         <tr><th>会場</th><td>充光館 1F DAギャラリー</td></tr>
         <tr><th>出展費</th><td><span class="nw">学生 500円​（大会参加費込み）</span>／<wbr><span class="nw">会員・非会員 1,000円</span>（大会参加費は​別途）</td></tr>
-        <tr><th>応募締切</th><td><span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
+        <tr><th>応募締切</th><td><span class="nw" style="color:var(--hai);text-decoration:line-through;">2026年10月30日​（金）</span><wbr> <span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
         <tr><th>ブース</th><td>ブース数に​限りが​ある​ため、<b>先着50名限定</b>です。</td></tr>
         <tr><th>注意事項</th><td>値付けは​各自自由です。​売買に​関する​トラブルは​個人間の​責任で​お願いします​（日本デザイン学会／立命館大学は​責任を​負いません）。​対外的な​研究発表の​場に​そぐわない​もの​・公序良俗に​反する​コンテンツは​ご遠慮ください。</td></tr>
       </table>
-      <p style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">出展登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/b6SjaUdM48NiXRCn8" target="_blank" rel="noopener">出展詳細フォーム</a> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
+      <p class="btn-row" style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">出展登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/b6SjaUdM48NiXRCn8" target="_blank" rel="noopener">出展詳細フォーム</a> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
       <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">①Peatixで​出展登録の​うえ、​②出展内容の​詳細​（出展名義・頒布物の​概要など）を​出展詳細フォームから​ご登録ください。​当日の​出展方​法は<a href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a>を​ご覧ください。</p>
     </div>
 
