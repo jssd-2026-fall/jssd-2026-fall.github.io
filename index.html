@@ -57,8 +57,13 @@
   .page section > p + p{margin-top:20px;}
   br.sp{display:none;}
   .spgap{display:none;}
-  .hero{position:relative;border-bottom:1px solid var(--line);}
-  .hero-inner{position:relative;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
+  .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden;}
+  .hero-inner{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:150px 40px 140px;text-align:left;}
+  .kv{position:absolute;top:50%;right:max(-80px,calc(50% - 720px));width:min(720px,60vw);aspect-ratio:1;
+    transform:translateY(-50%);pointer-events:none;}
+  .kv canvas,.kv .kv-poster{position:absolute;inset:0;width:100%;height:100%;display:block;}
+  .kv .kv-poster{display:none;}
+  .kv.kv-fail .kv-poster{display:block;}
   .hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;color:var(--hai);margin-bottom:44px;}
   .hero h1{font-family:var(--mincho);font-size:clamp(28px,4.6vw,50px);font-weight:600;line-height:1.6;letter-spacing:.06em;}
   .hero h1 .mada{color:var(--hai);}
@@ -73,6 +78,7 @@
   .btn:hover{opacity:.82;}
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(242,239,233,.5);}
   .btn.ghost:hover{background:var(--ink);color:var(--bg);opacity:1;}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;}   
   .news{list-style:none;}
   .news li{display:flex;gap:28px;padding:20px 4px;border-bottom:1px solid var(--line);font-size:14.5px;}
   .news .date{flex:0 0 8em;color:var(--hai);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;padding-top:3px;}
@@ -151,7 +157,8 @@
     br.pc{display:none;}
     br.sp{display:inline;}
     .spgap{display:block;height:1.2em;}
-    .hero-inner{padding:96px 22px 104px;}
+    .hero-inner{padding:52vw 22px 88px;}
+    .kv{top:0;right:-22vw;width:122vw;transform:none;}
     .hero .meta-line{margin-top:40px;}
     .pagehead{padding:60px 0 48px;}
     .pagehead h2{font-size:26px;}
@@ -164,11 +171,49 @@
     .venue-card{padding:24px 22px;}
     .venue-card li{flex-direction:column;align-items:flex-start;gap:3px;}
     .entry-block{padding:28px 24px;}
+    .btn-row{flex-direction:column;}
+    .btn-row .btn{width:100%;text-align:center;}
     .tl{margin-left:4px;}
     .tl .item{padding-left:26px;padding-bottom:44px;}
     .tl .time{position:static;display:block;width:auto;text-align:left;margin-bottom:7px;}
     .tl .time br{display:none;}
   }
+  :root{--hh:78px;}
+  .hero[data-layout="c"]{min-height:calc(100svh - var(--hh));display:flex;}
+  .hero[data-layout="c"] .kv{top:50%;right:max(-40px,calc(50% - 760px));transform:translateY(-50%);width:min(calc((100svh - var(--hh)) * 1.4),80vw);--kv-align-x:1;
+    --kv-shift:.05 0 .12 0 0 0 1;--kv-zoom:1 1 1 1 1 .8 .8;--kv-over:0 0 0 0 0 0 -140;}
+  .hero[data-layout="c"] .hero-inner{width:100%;max-width:none;margin:0;align-self:flex-end;
+    padding:0 clamp(56px,calc(56px + (100vw - 1024px) * .25),200px) 64px;
+    display:grid;grid-template-columns:1fr auto;grid-template-areas:"k k" "h h" "e e" "m c" ". r";column-gap:40px;align-items:end;}
+  .hero[data-layout="c"] .kicker{grid-area:k;margin-bottom:28px;}
+  .hero[data-layout="c"] h1{grid-area:h;}
+  .hero[data-layout="c"] .en-line{grid-area:e;}
+  .hero[data-layout="c"] .meta-line{grid-area:m;margin-top:40px;}
+  .hero[data-layout="c"] .hero-cta{grid-area:c;margin-top:40px;}
+  .hero[data-layout="c"] .kv-credit{grid-area:r;justify-self:end;margin-top:22px;font-size:13px;color:var(--ink);letter-spacing:.06em;text-align:right;
+    text-shadow:0 0 6px var(--bg),0 0 14px var(--bg);}   
+  .hero[data-layout="c"] .kv-credit .en{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;color:var(--hai);margin-right:14px;}
+  @media (max-width:900px){
+    :root{--hh:63px;}
+    .hero[data-layout="c"] .kv{top:-10vw;right:auto;left:50%;transform:translateX(-50%);width:162vw;
+      --kv-edge-x:36;--kv-margin-x:10;--kv-edge-y:70;--kv-margin-y:30;--kv-align-x:.5;--kv-align-y:0;
+      --kv-shift:.15 0 .04 0 0 .5 -.08;--kv-over:0 110 0 0 0 130 0;--kv-shift-y:.06 .06 .05 0 0 .05 .06;--kv-until:1;--kv-until-offset:130;
+      --kv-zoom:1 1 1.12 .895 1 .95 .78;}
+    .hero[data-layout="c"] .kicker,.hero[data-layout="c"] .en-line,.hero[data-layout="c"] .meta-line .sep{color:var(--ink);}
+    .hero[data-layout="c"] .hero-inner{display:block;padding:94vw 22px 48px;}
+    .hero[data-layout="c"] .kicker{margin-bottom:20px;}
+    .hero[data-layout="c"] .meta-line{margin-top:28px;}
+    .hero[data-layout="c"] .hero-cta{margin-top:28px;}
+    .hero[data-layout="c"] .kv-credit{margin-top:24px;text-align:left;font-size:11.5px;}
+    .hero[data-layout="c"] .kv-credit .en{display:block;margin:0 0 4px;color:var(--ink);opacity:.8;}
+  }
+  main{overflow:hidden;}                                   
+  section.bg-hand{position:relative;}
+  section.bg-hand > *{position:relative;z-index:1;}
+  section.bg-hand .bg{position:absolute;z-index:0;right:calc(50% - 50vw - 320px);top:-80px;width:1040px;opacity:.4;pointer-events:none;}
+  section.bg-hand .bg img,section.bg-hand .bg canvas{width:100%;display:block;}
+  section.bg-hand .bg.scatter-on img{display:none;}
+  @media (max-width:900px){section.bg-hand .bg{right:-46vw;top:10px;width:150vw;opacity:.22;}}
   body{word-break:keep-all;overflow-wrap:anywhere;line-break:strict;}
 </style>
 </head>
@@ -189,16 +234,21 @@
 
 <main>
 <div class="page">
-  <div class="hero">
+  <div class="hero" data-layout="c">
+    <div class="kv" data-kv="assets/kv/" data-kv-until=".kicker" role="img" aria-label="点描で描かれた手が、かき混ぜる・つかむ・持つ・指し示すなどの仕草へ、点が散っては集まりながら移り変わるキービジュアル">
+      <img class="kv-poster" src="assets/kv/poster.webp" alt="">
+    </div>
+    <script src="assets/kv/stipple-kv.js" defer></script>
     <div class="hero-inner">
-      <p class="kicker">JSSD AUTUMN CONFERENCE 2026 in KYOTO</p>
-      <h1><span class="nw">未来に​デザインは</span><wbr><span class="nw"><span class="mada">（未だ）</span>あるのか？</span></h1>
+      <p class="kicker">JSSD AUTUMN CONFERENCE 2026<br class="sp"> in KYOTO</p>
+      <h1><span class="nw">未来に​デザインは</span><br class="pc"><wbr><span class="nw"><span class="mada">（未だ）</span>あるのか？</span></h1>
       <p class="en-line">WILL DESIGN STILL MATTER?</p>
       <p class="meta-line"><span class="mono nw">2026.11.15 SUN</span><span class="sep">—</span><span class="nw">立命館大学 衣笠キャンパス</span></p>
       <div class="hero-cta">
         <a class="btn" href="registration.html">申込みは​こちら</a>
         <a class="btn ghost" href="summary.html">大会概要を​みる</a>
       </div>
+      <p class="kv-credit"><span class="en">KEY VISUAL</span><span class="nw">イラスト　元田 清蘭</span><wbr><span class="nw">（立命館大学 デザイン・アート学部​ １回生）</span></p>
     </div>
   </div>
   <section class="wrap">
@@ -209,7 +259,7 @@
       <li><span class="date">2026.10.26</span><span><span class="nw">学生プロポジション</span>（ポスター発表）​・<span class="nw">ZINE即売会</span>の​発表・出展内容の​詳細を​登録いただく​フォームを​公開しました。​お申込みの​方は、<a href="registration.html">申込み</a>の​各フォームから​ご回答を​お願いします。</span></li>
       <li><span class="date">2026.10.26</span><span>お問い​合わせの​多い​ご質問を​まとめた​「<a href="qa.html">よく​ある​ご質問​（Q&amp;A）</a>」の​ページを​公開しました。​チケットの​区分、​発表の​準備・​当日の​ことなどを​随時更新します。</span></li>
       <li><span class="date">2026.10.26</span><span>Peatixの​チケット構成を​見直しました。​学生の​発表者・出展者は、​参加費を​含む​「<span class="nw">発表費／参加費</span>」​チケット1枚で​お申込みいただけます。​旧「発表費」​チケットは​統合の​ため新規受付を​終了しました​（​「申込終了」と​表示されますが、<b>発表・出展の​お申込み自体は​締切まで​受付中</b>です）。​ご購入済みの​旧チケットは​そのまま​有効です。​ただし、<span class="nw">ZINE即売会</span>に​出展される​学生以外の​会員・非会員の​方​のみ、​別途大会参加費の​お申込みが​必要です。</span></li>
-      <li><span class="date">2026.09.30</span><span>学生プロポジションの​対象には<span class="nw">専門学校の​学生</span>も​含まれます。​募集要項の​表記を​「<span class="nw">学生​（学部​／修士／博士／専門学校）</span>」に​改めました。</span></li>
+      <li><span class="date">2026.09.30</span><span>学生プロポジションの​対象には<span class="nw">専門学校の​学生</span>も​含まれます。​募集要項の​表記を​「学生<wbr><span class="nw">（学部​／修士／博士／専門学校）</span>」に​改めました。</span></li>
       <li><span class="date">2026.09.27</span><span><span class="nw">参加登録</span>・<span class="nw">学生プロポジション発表</span>・<span class="nw">ZINE即売会出展</span>の​申込み受付を​開始しました。​詳しくは<a href="registration.html">申込み</a>を​ご覧ください。</span></li>
       <li><span class="date">2026.09.27</span><span>当日の​タイムテーブルを​公開しました。​詳しくは<a href="schedule.html">スケジュール</a>を​ご覧ください。</span></li>
       <li><span class="date">2026.07.31</span><span>大会Webサイトを​公開しました。​各申込み​（<span class="nw">参加登録</span>・<span class="nw">学生プロポジション発表</span>・<span class="nw">ZINE即売会出展</span>）は​9月末頃の​受付開始を​予定しています。</span></li>
