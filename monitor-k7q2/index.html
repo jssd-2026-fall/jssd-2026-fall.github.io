@@ -23,7 +23,7 @@
   /* 次のスライドまでの残り時間：下端に細く薄く */
   #bar{position:fixed;height:calc(var(--sh) * .004);bottom:0;left:0;width:0;background:#efeeec;opacity:.22;z-index:5}
   #dbg{position:fixed;left:8px;bottom:8px;font:12px/1.4 monospace;color:#9e9b97;background:rgba(0,0,0,.6);padding:4px 8px;display:none;z-index:9;white-space:pre}
-  #keep{position:fixed;width:2px;height:2px;opacity:0.01;left:0;top:0}
+  #keep{position:fixed;width:16px;height:16px;opacity:0.02;left:0;bottom:0}
   #pick{position:fixed;inset:0;display:none;align-items:center;justify-content:center;gap:40px;font:600 40px sans-serif}
   #pick a{color:#efeeec;border:2px solid #464441;padding:30px 50px;text-decoration:none}
   #pick a:focus{border-color:#efeeec}
@@ -51,7 +51,7 @@
 //   WebGL2 が使えないとき（または ?static=1）は静止画の手をフェードで替える。?anim=1 で重くても動かし続ける
 // ・下端の細いバーで、次のスライドまでの残り時間を出す
 // ・テスト用：?now=14:40 で時刻を指定、?debug=1 で状態を表示
-var PAGE = 13;
+var PAGE = 14;
 var q = new URLSearchParams(location.search);
 var SCREEN = q.get('screen');
 var NOW = q.get('now');
@@ -184,6 +184,18 @@ if (SCREEN) {
     fs.classList.add('on'); setTimeout(function () { fs.classList.remove('on'); }, 6000);
   }
 }
+// スリープ対策（2026-11-14）：画面を点けたままにするよう、ブラウザに頼む（対応していないブラウザでは何もしない）。
+// 全画面にしたときや、画面が戻ったときにも頼み直す。あわせて、見えない小さな動画を流し続ける
+var lock = null;
+function wake() {
+  if (!navigator.wakeLock || (lock && !lock.released)) return;
+  navigator.wakeLock.request('screen').then(function (l) { lock = l; }).catch(function () {});
+}
+wake();
+document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') wake(); });
+document.addEventListener('click', wake);
+document.addEventListener('keydown', wake);
+setInterval(function () { wake(); var k = document.getElementById('keep'); if (k.paused && k.play) k.play().catch(function () {}); }, 60000);
 var v = document.getElementById('keep'); if (v.play) v.play().catch(function () {});
 </script>
 </body>
