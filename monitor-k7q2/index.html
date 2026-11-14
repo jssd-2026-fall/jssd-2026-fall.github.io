@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Monitor</title>
+<style>
+  html,body{margin:0;height:100%;background:#12110f;overflow:hidden;cursor:none}
+  .layer{position:fixed;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1s ease}
+  .layer.on{opacity:1}
+  .layer{mix-blend-mode:lighten}  /* 地の色より明るい背景の手が、文字のすきまに透けて見える */
+  /* スライドの範囲（16:9）。背景の手と残り時間のバーはこの中に置く */
+  :root{--sh:min(100vh,56.25vw)}
+  #stage{position:fixed;height:var(--sh);width:calc(var(--sh) * 16 / 9);top:calc((100vh - var(--sh)) / 2);left:calc((100vw - var(--sh) * 16 / 9) / 2);overflow:hidden}
+  #cv{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.5s ease}
+  #cv.on{opacity:1}
+  /* WebGL2 が使えないときの静止画の手 */
+  .hand{position:absolute;opacity:0;transform:scale(1.06);transition:opacity 2.5s ease,transform 24s linear}
+  .hand.on{opacity:1;transform:scale(1)}
+  /* 次のスライドまでの残り時間：下端に細く薄く */
+  #bar{position:fixed;height:calc(var(--sh) * .004);bottom:calc((100vh - var(--sh)) / 2);left:calc((100vw - var(--sh) * 16 / 9) / 2);width:0;background:#efeeec;opacity:.22;z-index:5}
+  #dbg{position:fixed;left:8px;bottom:8px;font:12px/1.4 monospace;color:#9e9b97;background:rgba(0,0,0,.6);padding:4px 8px;display:none;z-index:9;white-space:pre}
+  #keep{position:fixed;width:2px;height:2px;opacity:0.01;left:0;top:0}
+  #pick{position:fixed;inset:0;display:none;align-items:center;justify-content:center;gap:40px;font:600 40px sans-serif}
+  #pick a{color:#efeeec;border:2px solid #464441;padding:30px 50px;text-decoration:none}
+  #pick a:focus{border-color:#efeeec}
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="cv"></canvas><img class="hand" id="h0" alt=""><img class="hand" id="h1" alt=""></div>
+<img class="layer" id="a" alt="">
+<img class="layer" id="b" alt="">
+<div id="pick"><a href="?screen=B1">B1（JK002）</a><a href="?screen=1F">1F（DA Gallery）</a></div>
+<div id="bar"></div>
+<div id="dbg"></div>
+<video id="keep" src="keep.mp4" muted loop playsinline autoplay></video>
+<script src="hands.js"></script>
+<script src="config.js"></script>
+<script>
+// 会場モニター用スライドショー（2026-11-14）
+// ・?screen=B1 / ?screen=1F で画面を選ぶ
+// ・config.json を1分ごとに読み直す。version が変わったら新しい画像を先に読み込んでから差し替える
+// ・page が変わったときだけ自動で再読み込みする
+// ・背景に薄く点描の手。スライドが替わるたびに、散って次の仕草と位置へ集まり直す（hands.js）。KVのときは消す
+//   WebGL2 が使えないとき（または ?static=1）は静止画の手をフェードで替える。?anim=1 で重くても動かし続ける
+// ・下端の細いバーで、次のスライドまでの残り時間を出す
+// ・テスト用：?now=14:40 で時刻を指定、?debug=1 で状態を表示
+var PAGE = 11;
+var q = new URLSearchParams(location.search);
+var SCREEN = q.get('screen');
+var NOW = q.get('now');
+var DEBUG = q.get('debug') === '1';
+var cfg = null, setName = null, slides = [], idx = -1, timer = null, front = 'a', handIdx = -1, handFront = 'h0', H = null;
+// Finderから直接開いた（file://）ときは、設定は config.js から読み、手は静止画にする
+var LOCAL = location.protocol === 'file:';
+var STATIC = q.get('static') === '1' || LOCAL;
+
+if (!SCREEN) { document.getElementById('pick').style.display = 'flex'; }
+if (DEBUG) document.getElementById('dbg').style.display = 'block';
+
+function hm() {
+  if (NOW) return NOW;
+  var d = new Date();
+  return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+}
+function pickSet() {
+  var sc = cfg.screens[SCREEN]; if (!sc) return null;
+  if (sc.force) return sc.force;
+  var t = hm(), s = sc.schedule[0].set;
+  for (var i = 0; i < sc.schedule.length; i++) if (sc.schedule[i].from <= t) s = sc.schedule[i].set;
+  return s;
+}
+function url(f) { return 'slides/' + f + '?v=' + encodeURIComponent(cfg.version); }
+function load(src) {
+  return new Promise(function (ok) {
+    var im = new Image();
+    im.onload = function () { (im.decode ? im.decode() : Promise.resolve()).then(function () { ok(true); }, function () { ok(true); }); };
+    im.onerror = function () { ok(false); };
+    im.src = src;
+  });
+}
+function show(i) {
+  var s = slides[i]; if (!s) return;
+  var src = url(s.img);
+  load(src).then(function (ok) {
+    if (!ok) {  // 読めなかった画像は飛ばし、いまのスライドを残したまま次へ
+      idx = i; clearTimeout(timer); timer = setTimeout(next, 3000); return;
+    }
+    var back = front === 'a' ? 'b' : 'a';
+    var el = document.getElementById(back);
+    el.src = src;
+    el.classList.add('on');
+    document.getElementById(front).classList.remove('on');
+    front = back;
+    idx = i;
+    hand(s.hand !== false);
+    bar(s.sec);
+    dbg();
+    clearTimeout(timer);
+    timer = setTimeout(next, s.sec * 1000);
+    var n = slides[(i + 1) % slides.length]; if (n) load(url(n.img)); // 次を先読み
+  });
+}
+function bar(sec) {
+  var b = document.getElementById('bar');
+  b.style.transition = 'none'; b.style.width = '0';
+  void b.offsetWidth;                                  // いったん0に戻してから伸ばす
+  b.style.transition = 'width ' + sec + 's linear';
+  b.style.width = 'calc(var(--sh) * 16 / 9)';
+}
+function hand(on) {
+  if (H === null) {                                    // 初回だけ：動く手を用意（できなければ false）
+    H = STATIC ? false : MonitorHands(document.getElementById('cv'),
+      { base: '', hands: (cfg.hand_bins || []).map(url), n: cfg.hand_n, k: cfg.hand_k, pt: cfg.hand_pt, place: cfg.place, force: q.get('anim') === '1' });
+  }
+  if (H) { if (on) H.next(); else H.hide(); return; }
+  var hs = cfg.hands || [];
+  if (!on || !hs.length) { document.getElementById('h0').classList.remove('on'); document.getElementById('h1').classList.remove('on'); return; }
+  handIdx = (handIdx + 1) % hs.length;
+  var src = url(hs[handIdx]), pl = cfg.place[handIdx % cfg.place.length];
+  load(src).then(function (ok) {
+    if (!ok) return;
+    var back = handFront === 'h0' ? 'h1' : 'h0';
+    var el = document.getElementById(back);
+    // 置き場所 [中心x, 中心y, 大きさ]（スライドの高さを1、横は16/9）を、ステージに対する％に
+    el.style.left = ((pl[0] - pl[2] / 2) / (16 / 9) * 100) + '%'; el.style.top = ((pl[1] - pl[2] / 2) * 100) + '%';
+    el.style.width = (pl[2] / (16 / 9) * 100) + '%'; el.style.height = (pl[2] * 100) + '%';
+    el.src = src;
+    el.classList.add('on');
+    document.getElementById(handFront).classList.remove('on');
+    handFront = back;
+  });
+}
+function next() {
+  var s = pickSet();
+  if (s !== setName) { useSet(s, false); return; }
+  show((idx + 1) % slides.length);
+}
+function useSet(name, immediate) {
+  setName = name;
+  slides = cfg.sets[name] || [];
+  // 最初の1枚は show() の中で読み込みが終わってから差し替えるので暗転しない
+  idx = -1; show(0);
+}
+function dbg() {
+  if (!DEBUG) return;
+  document.getElementById('dbg').textContent =
+    'screen ' + SCREEN + '  set ' + setName + '  slide ' + (idx + 1) + '/' + slides.length +
+    '  time ' + hm() + '  version ' + (cfg && cfg.version) + '  hands ' + (H ? (H.animated ? 'anim' : 'fade') : 'static');
+}
+function poll(first) {
+  if (LOCAL) { if (first && window.MONITOR_CFG) { cfg = window.MONITOR_CFG; useSet(pickSet(), true); } return; }
+  fetch('config.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(function (c) {
+      if (c.page && c.page !== PAGE) { location.reload(); return; }
+      var changed = !cfg || c.version !== cfg.version;
+      cfg = c;
+      if (first || changed) useSet(pickSet(), true);
+      dbg();
+    })
+    .catch(function () {   // 通信が切れても今のスライドを流し続ける。最初から読めないときは同梱の config.js で始める
+      if (!cfg && window.MONITOR_CFG) { cfg = window.MONITOR_CFG; useSet(pickSet(), true); }
+    });
+}
+if (SCREEN) { poll(true); setInterval(poll, 60000); }
+var v = document.getElementById('keep'); if (v.play) v.play().catch(function () {});
+</script>
+</body>
+</html>
