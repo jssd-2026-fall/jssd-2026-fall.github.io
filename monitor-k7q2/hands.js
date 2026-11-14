@@ -13,7 +13,7 @@ function MonitorHands(cv, opt) {
   var VS = '#version 300 es\n' +
     'precision highp float;\n' +
     'in vec2 aA; in vec2 aB; in float aLA; in float aLB;\n' +
-    'uniform float uT, uTime, uK, uS, uPt; uniform vec3 uOA, uOB; uniform vec2 uWH;\n' +
+    'uniform float uT, uTime, uK, uS, uPt; uniform vec3 uOA, uOB; uniform vec2 uWH, uO;\n' +
     'out float vL;\n' +
     'const float PI = 3.14159265, TAU = 6.2831853;\n' +
     'uint hash(uint x) { x ^= x >> 16; x *= 0x7feb352du; x ^= x >> 15; x *= 0x846ca68bu; x ^= x >> 16; return x; }\n' +
@@ -42,7 +42,7 @@ function MonitorHands(cv, opt) {
     '    }\n' +
     '  }\n' +
     '  vL = mix(aLA, aLB, t) * uK;\n' +
-    '  vec2 c = p * uS;\n' +
+    '  vec2 c = p * uS + uO;\n' +
     '  gl_Position = vec4(c.x / uWH.x * 2. - 1., 1. - c.y / uWH.y * 2., 0, 1);\n' +
     '  gl_PointSize = uPt;\n' +
     '}';
@@ -59,7 +59,7 @@ function MonitorHands(cv, opt) {
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error('link');
   } catch (e) { return false; }
   var U = {}, L = {};
-  ['uT', 'uTime', 'uK', 'uS', 'uPt', 'uOA', 'uOB', 'uWH'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+  ['uT', 'uTime', 'uK', 'uS', 'uPt', 'uOA', 'uOB', 'uWH', 'uO'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
   ['aA', 'aB', 'aLA', 'aLB'].forEach(function (n) { L[n] = gl.getAttribLocation(prog, n); gl.enableVertexAttribArray(L[n]); });
   gl.blendFunc(gl.ONE, gl.ONE);
 
@@ -76,11 +76,12 @@ function MonitorHands(cv, opt) {
   }
   // 置き場所 [中心x, 中心y, 大きさ]（スライドの高さを1とする。横は 16/9）
   function offs(pl) { var s = pl[2]; return [(pl[0] - s / 2) * SIZE, (pl[1] - s / 2) * SIZE, s]; }
-  var W = 1, H = 1, pt = 1;
+  var W = 1, H = 1, pt = 1, SH = 1, OX = 0, OY = 0;   // SH：スライドの範囲（16:9）の高さ、OX/OY：その左上
   function resize() {
-    var r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2560 / Math.max(1, r.width));
+    var r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2880 / Math.max(1, r.width));
     W = cv.width = Math.max(1, Math.round(r.width * dpr)); H = cv.height = Math.max(1, Math.round(r.height * dpr));
-    pt = Math.max(1, (opt.pt || 1) * H / 1080);      // 点の大きさ：1080pxの高さで opt.pt px（4Kではその2倍）
+    SH = Math.min(H, W * 9 / 16); OX = (W - SH * 16 / 9) / 2; OY = (H - SH) / 2;
+    pt = Math.max(1, (opt.pt || 1) * SH / 1080);      // 点の大きさ：1080pxの高さで opt.pt px（4Kではその2倍）
   }
   var cur = M, curPl = [0.89, .5, 1], nxt = M, nxtPl = curPl, T = 0, time = 0, running = false, anim = true, slow = 0;
   function draw() {
@@ -93,7 +94,7 @@ function MonitorHands(cv, opt) {
     gl.bindBuffer(gl.ARRAY_BUFFER, bri[a]); gl.vertexAttribPointer(L.aLA, 1, gl.UNSIGNED_BYTE, true, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, bri[b]); gl.vertexAttribPointer(L.aLB, 1, gl.UNSIGNED_BYTE, true, 0, 0);
     gl.uniform1f(U.uT, T); gl.uniform1f(U.uTime, time); gl.uniform1f(U.uK, K);
-    gl.uniform1f(U.uS, H / SIZE); gl.uniform1f(U.uPt, pt); gl.uniform2f(U.uWH, W, H);
+    gl.uniform1f(U.uS, SH / SIZE); gl.uniform2f(U.uO, OX, OY); gl.uniform1f(U.uPt, pt); gl.uniform2f(U.uWH, W, H);
     gl.uniform3fv(U.uOA, offs(curPl)); gl.uniform3fv(U.uOB, offs(T > 0 ? nxtPl : curPl));
     gl.drawArrays(gl.POINTS, 0, N);
   }
