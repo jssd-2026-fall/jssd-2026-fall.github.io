@@ -29,12 +29,17 @@
   #pick a:focus{border-color:#efeeec}
   #fs{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font:600 28px sans-serif;color:#efeeec;background:rgba(0,0,0,.7);border:1px solid #464441;padding:18px 32px;white-space:nowrap;opacity:0;transition:opacity .6s;z-index:10;pointer-events:none}
   #fs.on{opacity:1}
+  /* 懇親会の写真：スライドの範囲の内側（上の見出しと下のハッシュタグを避ける）に、比率を保って置く */
+  #photos{position:fixed;height:var(--sh);width:calc(var(--sh) * 16 / 9);top:calc((100vh - var(--sh)) / 2);left:calc((100vw - var(--sh) * 16 / 9) / 2);pointer-events:none}
+  .ph{position:absolute;left:3%;top:10.5%;width:94%;height:73%;object-fit:contain;opacity:0;transition:opacity 1.2s ease}
+  .ph.on{opacity:1}
 </style>
 </head>
 <body>
 <div id="stage"><canvas id="cv"></canvas><div id="box"><img class="hand" id="h0" alt=""><img class="hand" id="h1" alt=""></div></div>
 <img class="layer" id="a" alt="">
 <img class="layer" id="b" alt="">
+<div id="photos"><img class="ph" id="p0" alt=""><img class="ph" id="p1" alt=""></div>
 <div id="pick"><a href="?screen=B1">B1（JK002）</a><a href="?screen=1F">1F（DA Gallery）</a></div>
 <div id="bar"></div>
 <div id="fs">クリック（リモコンは決定ボタン）で全画面</div>
@@ -50,8 +55,10 @@
 // ・背景に薄く点描の手。スライドが替わるたびに、散って次の仕草と位置へ集まり直す（hands.js）。KVのときは消す
 //   WebGL2 が使えないとき（または ?static=1）は静止画の手をフェードで替える。?anim=1 で重くても動かし続ける
 // ・下端の細いバーで、次のスライドまでの残り時間を出す
+// ・懇親会（set が party）：GitHub の photos/ に上げた写真を、3分ごとに一覧を取り直して流す。新しく上がった写真を先に出す
+//   表紙（party_1）を cover_every 枚ごとに挟む。写真がまだ無いときは表紙だけ
 // ・テスト用：?now=14:40 で時刻を指定、?debug=1 で状態を表示
-var PAGE = 14;
+var PAGE = 15;
 var q = new URLSearchParams(location.search);
 var SCREEN = q.get('screen');
 var NOW = q.get('now');
@@ -85,6 +92,16 @@ function load(src) {
     im.src = src;
   });
 }
+var layerSrc = '';
+function setLayer(src) {
+  if (src === layerSrc) return;
+  var back = front === 'a' ? 'b' : 'a';
+  var el = document.getElementById(back);
+  el.src = src;
+  el.classList.add('on');
+  document.getElementById(front).classList.remove('on');
+  front = back; layerSrc = src;
+}
 function show(i) {
   var s = slides[i]; if (!s) return;
   var src = url(s.img);
@@ -92,12 +109,8 @@ function show(i) {
     if (!ok) {  // 読めなかった画像は飛ばし、いまのスライドを残したまま次へ
       idx = i; clearTimeout(timer); timer = setTimeout(next, 3000); return;
     }
-    var back = front === 'a' ? 'b' : 'a';
-    var el = document.getElementById(back);
-    el.src = src;
-    el.classList.add('on');
-    document.getElementById(front).classList.remove('on');
-    front = back;
+    photoOff();
+    setLayer(src);
     idx = i;
     hand(s.hand !== false);
     bar(s.sec);
@@ -140,19 +153,61 @@ function hand(on) {
 function next() {
   var s = pickSet();
   if (s !== setName) { useSet(s, false); return; }
+  if (setName === 'party') { partyNext(); return; }
   show((idx + 1) % slides.length);
 }
 function useSet(name, immediate) {
   setName = name;
   slides = cfg.sets[name] || [];
+  clearInterval(PH.t);
+  if (name === 'party') { phFetch(); PH.t = setInterval(phFetch, 180000); PH.count = 0; }
   // 最初の1枚は show() の中で読み込みが終わってから差し替えるので暗転しない
   idx = -1; show(0);
+}
+// ---------- 懇親会の写真 ----------
+var PH = { list: [], fresh: [], known: null, i: 0, count: 0, t: null, front: 'p0' };
+function phFetch() {
+  var p = cfg.party; if (!p || LOCAL) return;
+  var api = 'https://api.github.com/repos/' + p.repo + '/contents/' + (q.get('phpath') || p.path) + '?ref=' + p.branch;
+  fetch(api, { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (a) {
+      var urls = a.filter(function (f) { return f.type === 'file' && /\.(jpe?g|png|webp|gif)$/i.test(f.name); })
+        .sort(function (x, y) { return x.name < y.name ? -1 : 1; })
+        .map(function (f) { return f.download_url; });
+      var first = PH.known === null; PH.known = PH.known || {};
+      urls.forEach(function (u) { if (!PH.known[u]) { PH.known[u] = 1; if (!first) PH.fresh.push(u); } });
+      PH.list = urls; dbg();
+    })
+    .catch(function () {});   // 取れなかったら、手元の一覧のまま流し続ける
+}
+function photoOff() { document.getElementById('p0').classList.remove('on'); document.getElementById('p1').classList.remove('on'); }
+function partyNext() {
+  var p = cfg.party; PH.count++;
+  var u = PH.fresh.shift();
+  if (!u) {
+    if (!PH.list.length || PH.count % (p.cover_every + 1) === 0) { show(0); return; }
+    u = PH.list[PH.i++ % PH.list.length];
+  }
+  var frame = url(p.frame);
+  Promise.all([load(u), load(frame)]).then(function (r) {
+    clearTimeout(timer);
+    if (!r[0]) { timer = setTimeout(next, 1000); return; }   // 読めない写真（HEICなど）は飛ばす
+    setLayer(frame);
+    var back = PH.front === 'p0' ? 'p1' : 'p0', el = document.getElementById(back);
+    el.src = u; el.classList.add('on');
+    document.getElementById(PH.front).classList.remove('on');
+    PH.front = back; idx = -1;
+    hand(false); bar(p.sec); dbg();
+    timer = setTimeout(next, p.sec * 1000);
+    var n = PH.fresh[0] || (PH.list.length && PH.list[PH.i % PH.list.length]); if (n) load(n);   // 次を先読み
+  });
 }
 function dbg() {
   if (!DEBUG) return;
   document.getElementById('dbg').textContent =
     'screen ' + SCREEN + '  set ' + setName + '  slide ' + (idx + 1) + '/' + slides.length +
-    '  time ' + hm() + '  version ' + (cfg && cfg.version) + '  hands ' + (H ? (H.animated ? 'anim' : 'fade') : 'static');
+    (setName === 'party' ? '  photos ' + PH.list.length + (PH.fresh.length ? '（新着 ' + PH.fresh.length + '）' : '') : '') + '  time ' + hm() + '  version ' + (cfg && cfg.version) + '  hands ' + (H ? (H.animated ? 'anim' : 'fade') : 'static');
 }
 function poll(first) {
   if (LOCAL) { if (first && window.MONITOR_CFG) { cfg = window.MONITOR_CFG; useSet(pickSet(), true); } return; }
