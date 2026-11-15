@@ -1,6 +1,6 @@
 {
- "version": "20261114-224549",
- "page": 15,
+ "version": "20261115-110606",
+ "page": 17,
  "screens": {
   "B1": {
    "force": null,
@@ -163,6 +163,7 @@
   "branch": "main",
   "path": "monitor-k7q2/photos",
   "frame": "party_2.jpg",
+  "overlay": "party_ov.png",
   "sec": 8,
   "cover_every": 12
  },
