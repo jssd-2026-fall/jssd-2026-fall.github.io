@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://jssd-2026-fall.github.io/sitemap.xml
