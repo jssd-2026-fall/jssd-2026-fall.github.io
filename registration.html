@@ -88,6 +88,7 @@
   .btn:hover{opacity:.82;}
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(242,239,233,.5);}
   .btn.ghost:hover{background:var(--ink);color:var(--bg);opacity:1;}
+  .btn.disabled{pointer-events:none;cursor:default;background:transparent;color:var(--hai);border:1px solid var(--line);opacity:.55;}
   .btn-row{display:flex;flex-wrap:wrap;gap:12px;}   
   .news{list-style:none;}
   .news li{display:flex;gap:28px;padding:20px 4px;border-bottom:1px solid var(--line);font-size:14.5px;}
@@ -266,9 +267,8 @@
   <div class="pagehead"><div class="wrap"><span class="en">ENTRY</span><h2>申込み</h2></div></div>
 
   <section class="wrap">
-    <p style="margin-bottom:16px;">各種​お申込み​（<span class="nw">参加登録</span>・<span class="nw">学生プロポジション発表</span>・<span class="nw">ZINE即売会出展</span>）は​ <b>Peatix</b> にて受付中です​（事前決済）。</p>
-    <p style="margin-bottom:16px;"><a class="btn" style="margin-top:12px;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">Peatixで​申込む</a></p>
-    <p style="margin-bottom:16px;font-size:12.5px;color:var(--hai);">※チケット構成を​見直し、​学生の​発表者・出展者は​参加費を​含む​「<span class="nw">発表費／参加費</span>」​チケットに​統合しました。​旧「発表費」​チケットは​「申込終了」と​表示されますが、​発表・出展の​お申込み自体は​締切まで​受付中です。​ご購入済みの​旧チケットは​そのまま​有効です。​ただし、​ZINE即売会に​出展される​学生以外の​会員・非会員の​方​のみ、​別途大会参加費の​お申込みが​必要です。</p>
+    <p style="margin-bottom:16px;">各種​お申込み​（<span class="nw">参加登録</span>・<span class="nw">学生プロポジション発表</span>・<span class="nw">ZINE即売会出展</span>）の​受付は<b>終了しました</b>。​多数の​お申込み、​ありがとう​ございました。</p>
+    <p style="margin-bottom:16px;"><span class="btn disabled" style="margin-top:12px;">受付は​終了しました</span></p>
     <p style="margin-bottom:48px;">お申込みに​関する​疑問は​「<a href="qa.html">よく​ある​ご質問​（Q&amp;A）</a>」も​あわせて​ご覧ください。</p>
 
     <div class="label">申込み締切</div>
@@ -280,12 +280,12 @@
 
     <div class="entry-block">
       <div class="label">大会参加申込み</div>
-      <p>参加される方は​【〆切：<span class="nw">2026年11月13日​（金）​23:59</span>】までに、​Peatixより​チケットを​お申込みください。</p>
+      <p>参加登録の​受付は​終了しました。</p>
       <table class="wf" style="margin-top:16px;">
         <tr><th>大会参加費</th><td><span class="nw">学生・名誉会員・賛助会員 無料</span>／<wbr><span class="nw">会員 1,000円</span>／<wbr><span class="nw">非会員 3,000円</span></td></tr>
         <tr><th>懇親会参加費</th><td><span class="nw">学生 無料</span>／<wbr><span class="nw">会員・非会員 1,000円</span></td></tr>
       </table>
-      <p style="margin-top:26px;"><a class="btn" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">Peatixで​申込む</a></p>
+      <p style="margin-top:26px;"><span class="btn disabled" style="margin-top:0;">受付は​終了しました</span></p>
     </div>
 
     <div class="entry-block">
@@ -298,8 +298,8 @@
         <tr><th>応募締切</th><td><span class="nw" style="color:var(--hai);text-decoration:line-through;">2026年10月30日​（金）</span><wbr> <span class="nw">2026年11月8日​（日）​23:59</span></td></tr>
         <tr><th>備考</th><td>秋季大会では​一般研究発表は​ありません。</td></tr>
       </table>
-      <p class="btn-row" style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">発表登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/pen3hjRA6RqJCgyw9" target="_blank" rel="noopener">発表詳細フォーム</a> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
-      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">①Peatixで​発表登録の​うえ、​②発表内容の​詳細​（所属・氏名・発表題目など）を​発表詳細フォームから​ご登録ください。​要旨等の​事前提出は​ありません。​当日の​発表方​法は<a href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a>を​ご覧ください。</p>
+      <p class="btn-row" style="margin-top:26px;"><span class="btn ghost disabled" style="margin-top:0;">発表登録は​終了しました</span> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
+      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">発表登録・発表詳細フォームの​受付は​終了しました。</p>
     </div>
 
     <div class="entry-block">
@@ -312,8 +312,8 @@
         <tr><th>ブース</th><td>ブース数に​限りが​ある​ため、<b>先着50名限定</b>です。</td></tr>
         <tr><th>注意事項</th><td>値付けは​各自自由です。​売買に​関する​トラブルは​個人間の​責任で​お願いします​（日本デザイン学会／立命館大学は​責任を​負いません）。​対外的な​研究発表の​場に​そぐわない​もの​・公序良俗に​反する​コンテンツは​ご遠慮ください。</td></tr>
       </table>
-      <p class="btn-row" style="margin-top:26px;"><a class="btn ghost" style="margin-top:0;" href="https://peatix.com/event/5201823" target="_blank" rel="noopener">出展登録​（Peatix）</a> <a class="btn ghost" style="margin-top:0;" href="https://forms.gle/b6SjaUdM48NiXRCn8" target="_blank" rel="noopener">出展詳細フォーム</a> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
-      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">①Peatixで​出展登録の​うえ、​②出展内容の​詳細​（出展名義・頒布物の​概要など）を​出展詳細フォームから​ご登録ください。​当日の​出展方​法は<a href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a>を​ご覧ください。</p>
+      <p class="btn-row" style="margin-top:26px;"><span class="btn ghost disabled" style="margin-top:0;">出展登録は​終了しました</span> <a class="btn ghost" style="margin-top:0;" href="https://docs.google.com/document/d/1KqP520KxA_H0ANfIsxEAnIkS3ANT71DrcBrPIML1gFU/view" target="_blank" rel="noopener">発表要項</a></p>
+      <p style="margin-top:18px;font-size:12.5px;color:var(--hai);">出展登録・出展詳細フォームの​受付は​終了しました。</p>
     </div>
 
     <p style="font-size:12.5px;color:var(--hai);">※発表者・出展者には、​Peatixを​通じて​ご連絡する​ことがあります。</p>
